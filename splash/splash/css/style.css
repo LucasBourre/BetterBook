@@ -1843,3 +1843,20 @@ form label {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+
+.imageaffsemaine{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin-bottom:100px;
+  border:1px solid #9FC6FF;
+  -moz-border-radius:10px 0;
+  -webkit-border-radius:10px 0;
+  border-radius:10px 0;
+  box-shadow: 3px 3px 0px grey;
+}
+
+#affsemainelien{
+  font-style:italic ;
+}
