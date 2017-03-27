@@ -42,10 +42,57 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
 
+
+	<!-- Pronostic.css -->
+	<link rel="stylesheet" href="css/Pronostic.css">
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 </head>
 	<body>
+	<script type="text/javascript">
+
+		/** Fonction basculant la visibilité d'un élément dom
+		 * @parameter anId string l'identificateur de la cible à montrer, cacher
+		 */
+		function toggle(anId)
+		{
+			node = document.getElementById(anId);
+			if (node.style.visibility=="hidden")
+			{
+				// Contenu caché, le montrer
+				node.style.visibility = "visible";
+				node.style.height = "auto";			// Optionnel rétablir la hauteur
+			}
+			else
+			{
+				// Contenu visible, le cacher
+				node.style.visibility = "hidden";
+				node.style.height = "0";			// Optionnel libérer l'espace
+			}
+		}
+
+		function myFunction(id) {
+			var node = document.getElementById(id);
+			if (node.style.background =="rgb(159, 218, 144)"){
+				node.style.background = "rgb(233, 233, 233)";
+				document.getElementById("cotetotal").innerHTML=parseFloat(document.getElementById("cotetotal").innerHTML) / parseFloat(node.value);
+
+			}
+			else {
+				node.style.background = "rgb(159, 218, 144)";
+				var cote = parseFloat(document.getElementById("cotetotal").innerHTML);
+				if(cote == 0)
+				{ document.getElementById("cotetotal").innerHTML=parseFloat(node.value);}
+				else {
+					document.getElementById("cotetotal").innerHTML = parseFloat(document.getElementById("cotetotal").innerHTML) * parseFloat(node.value);
+				}
+			}
+		}
+
+
+
+	</script>
 		
 	<div class="gtco-loader"></div>
 	
@@ -58,14 +105,14 @@
 
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
-						<div id="gtco-logo"><a href="Accueil.php">BetterBook <em>.</em></a></div>
+						<div id="gtco-logo"><a href="Accueil.html">BetterBook <em>.</em></a></div>
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
-							<li><a href="Pronostiques.php">Pronostiques</a></li>
-							<li><a href="Classement.php">Classement</a></li>
-							<li><a href="Informations.php">Comment Ca Marche ?</a></li>
-							<li><a href="Contact.php">Contact</a></li>
+							<li><a href="Pronostiques.html">Pronostiques</a></li>
+							<li><a href="Classement.html">Classement</a></li>
+							<li><a href="Informations.html">Comment Ca Marche ?</a></li>
+							<li><a href="Contact.html">Contact</a></li>
 							<li class="btn-cta"><a href="#"><span>Connexion</span></a></li>
 						</ul>
 					</div>
@@ -75,7 +122,9 @@
 		</nav>
 	
 	<header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_2.jpg)">
-		<div class="overlay"></div>
+		<div class="overlay">
+			<img id="pronostic" src="images/pronostic.png" />
+		</div>
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-left">
@@ -102,81 +151,89 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
 					<h2>Pronostiques </h2>
-					<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+					<p>Ouvrez le champs des possibilités! Les paris n'auront plus de secret pour vous!</p>
 				</div>
 			</div>
+
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn"> 
 						<span class="icon">
-							<i class="ti-vector"></i>
+							<a href="#match" onclick="toggle('foo')"> <img id= "ligue1"  src="images/ligue1.png"/ > </a>
+							          													   <!-- liiiigggguuuueeee 1   -->
 						</span>
-						<h3>Pixel Perfect</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-tablet"></i>
-						</span>
-						<h3>Fully Responsive</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-settings"></i>
-						</span>
-						<h3>Web Development</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-6">
-					<div class="feature-center animate-box" data-animate-effect="fadeIn">
-						<span class="icon">
-							<i class="ti-ruler-pencil"></i>
-						</span>
-						<h3>Web Design</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+						<h3>Ligue 1</h3>
+						<p>Le championnat de France de football professionnel masculin. </p>
 					</div>
 				</div>
 
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<i class="ti-paint-roller"></i>
+							<img id="liga" src="images/Liga-bbva.jpg" />     <!-- liiiiggggaaaaaaaaaaaaaaaaaa   -->
 						</span>
-						<h3>Accent Colours</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+						<h3>Liga </h3>
+						<p>Le championnat d'Espagne de football.</p>
 					</div>
 				</div>
+
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<i class="ti-announcement"></i>
+							<img id="Premier-League" src="images/Premier-League-Logo-shield.png" />   <!--  Premier-Leagueeeeeeeeeeeeeeeeeee   -->
 						</span>
-						<h3>Theme Updates</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+						<h3>Premier League</h3>
+						<p>Le Championnat d'Angleterre de football. </p>
 					</div>
 				</div>
+
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<i class="ti-stats-up"></i>
+							<img id="calcio" src="images/calcio.png" />     <!--  calciooooooooooooooooooooo   -->
 						</span>
-						<h3>Increase Earnings</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+						<h3>Calcio</h3>
+						<p>Le championnat d'Italie de football. </p>
 					</div>
 				</div>
+
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<i class="ti-magnet"></i>
+							<img id="Bundesliga" src="images/Bundesliga-logo-2010.png" />     <!--  bundesliiiiiiiiiiiiiiiiiiigggaaaaaaaaaaaaa   -->
 						</span>
-						<h3>Passive Income</h3>
-						<p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. </p>
+						<h3>Bundesliga</h3>
+						<p>Le Championnat d'Allemagne de football. </p>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<img id="Ligue_des_Champions" src="images/UEFA_Ligue_des_Champions.svg.png" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+						</span>
+						<h3>Ligue des Champions</h3>
+						<p>La Ligue des champions de l'UEFA. </p>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<img id="Europa_League" src="images/UEFA_Europa_League_logo.png" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+						</span>
+						<h3>Europa League</h3>
+						<p>La Ligue Europa de l'UEFA. </p>
+					</div>
+				</div>
+
+					<div class="col-md-3 col-sm-6">
+					<div class="feature-center animate-box" data-animate-effect="fadeIn">
+						<span class="icon">
+							<img id="Matchs_Internationaux" src="images/international-friendly-match-logo.jpg" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+						</span>
+						<h3>Matchs Internationaux</h3>
+						<p>Matchs_Internationaux entre des selections nationales</p>
 					</div>
 				</div>
 
@@ -184,6 +241,32 @@
 		</div>
 	</div>
 
+		<div id ="foo" >
+		<div id="gtco-features" class="border-bottom">
+			<h2 id="match">Les matchs</h2>
+				<?php
+					require ('fct.php');
+					require ('connectBD.php');
+					yep();
+					global $connexion;
+					$var = $connexion->prepare("SELECT nom FROM Championnats WHERE ID LIKE 1");
+					$var->execute();
+					$var->setFetchMode(PDO::FETCH_ASSOC);
+					while ($ligne = $var->fetch()){
+						echo $ligne['nom'];
+						echo "</br>";
+					}
+					//$res = ($ligne['nom']);
+					echo "fin";
+					?>
+			<strong >Lille vs Angers</strong> <button id= "bouton" onclick="myFunction('bouton')" value="1.45"> 1.45</button>
+			<button id="boutonX" onclick="myFunction('boutonX')" value="2.90"> 2.90</button>
+			<button id= "bouton2" onclick="myFunction('bouton2')" value="3.10"> 3.10</button>
+
+		</div>
+			<div id="cote"> <strong>Cote total</strong> </div>
+			<div id="cotetotal">0</div>
+		</div>
 
 		<footer id="gtco-footer" role="contentinfo">
 			<div class="gtco-container">
@@ -198,10 +281,10 @@
 
 					<div class="col-md-4 col-md-push-1">
 						<div class="gtco-widget">
-							<h3>Liens</h3>
+							<h3 id="Liens"> Liensss</h3>
 							<ul class="gtco-footer-links">
-								<li><a href="Informations.php">Comment ça marche ?</a></li>
-								<li><a href="Contact.php">Contactez nous.</a></li>
+								<li><a href="Informations.html">Comment ça marche ?</a></li>
+								<li><a href="Contact.html">Contactez nous.</a></li>
 								<li><a href="#">Plan du site</a></li>
 								<li><a href="#">Informations légales </a></li>
 								<li><a href="#">C.G.U</a></li>
