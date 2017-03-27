@@ -285,14 +285,14 @@
 
 					<div class="col-md-4">
 						<div class="gtco-widget">
-							<h3>A propos de  <span class="footer-logo">BetterBook<span>.</span></span></h3>
+							<h3>A propos de  <span class="footer-logo">BetterBook<span>.<span></span></h3>
 							<p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
 						</div>
 					</div>
 
 					<div class="col-md-4 col-md-push-1">
 						<div class="gtco-widget">
-							<h3 id="Liens"> Liensss</h3>
+							<h3>Liens</h3>
 							<ul class="gtco-footer-links">
 								<li><a href="Informations.php">Comment ça marche ?</a></li>
 								<li><a href="Contact.php">Contactez nous.</a></li>
@@ -307,10 +307,10 @@
 						<div class="gtco-widget">
 							<h3>Contact</h3>
 							<ul class="gtco-quick-contact">
-								<li><a href="#"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
-								<li><a href="#"><i class="icon-mail2"></i> BetterBook@gmail.com</a></li>
-								<li><a href="#"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
-								<li><a href="#"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
+								<li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
+								<li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
+								<li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
+								<li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
 							</ul>
 						</div>
 					</div>

@@ -352,10 +352,10 @@
 						<div class="gtco-widget">
 							<h3>Contact</h3>
 							<ul class="gtco-quick-contact">
-								<li><a href="#"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
-								<li><a href="#"><i class="icon-mail2"></i> BetterBook@gmail.com</a></li>
-								<li><a href="#"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
-								<li><a href="#"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
+								<li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
+								<li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
+								<li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
+								<li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
 							</ul>
 						</div>
 					</div>
