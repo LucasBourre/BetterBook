@@ -105,14 +105,14 @@
 
 				<div class="row">
 					<div class="col-sm-4 col-xs-12">
-						<div id="gtco-logo"><a href="Accueil.html">BetterBook <em>.</em></a></div>
+						<div id="gtco-logo"><a href="Accueil.php">BetterBook <em>.</em></a></div>
 					</div>
 					<div class="col-xs-8 text-right menu-1">
 						<ul>
-							<li><a href="Pronostiques.html">Pronostiques</a></li>
-							<li><a href="Classement.html">Classement</a></li>
-							<li><a href="Informations.html">Comment Ca Marche ?</a></li>
-							<li><a href="Contact.html">Contact</a></li>
+							<li><a href="Pronostiques.php">Pronostiques</a></li>
+							<li><a href="Classement.php">Classement</a></li>
+							<li><a href="Informations.php">Comment Ca Marche ?</a></li>
+							<li><a href="Contact.php">Contact</a></li>
 							<li class="btn-cta"><a href="#"><span>Connexion</span></a></li>
 						</ul>
 					</div>
@@ -245,23 +245,34 @@
 		<div id="gtco-features" class="border-bottom">
 			<h2 id="match">Les matchs</h2>
 				<?php
-					require ('fct.php');
+					
 					require ('connectBD.php');
-					yep();
+				
 					global $connexion;
-					$var = $connexion->prepare("SELECT nom FROM Championnats WHERE ID LIKE 1");
-					$var->execute();
-					$var->setFetchMode(PDO::FETCH_ASSOC);
-					while ($ligne = $var->fetch()){
-						echo $ligne['nom'];
-						echo "</br>";
-					}
-					//$res = ($ligne['nom']);
-					echo "fin";
+					// On récupère tout le contenu de la table jeux_video
+					$reponse = $connexion->prepare('select e1.nom as m1 ,e2.nom as m2,m.cote1,m.cote2,m.coteN from Matchs m join Equipes e1 on m.equipe1 = e1.id 
+													join Equipes e2 on m.equipe2 = e2.id');
+					$reponse->execute();
+
+						// On affiche chaque entrée une à une
+					while ($donnees = $reponse->fetch())
+					{
 					?>
-			<strong >Lille vs Angers</strong> <button id= "bouton" onclick="myFunction('bouton')" value="1.45"> 1.45</button>
-			<button id="boutonX" onclick="myFunction('boutonX')" value="2.90"> 2.90</button>
-			<button id= "bouton2" onclick="myFunction('bouton2')" value="3.10"> 3.10</button>
+					    <p>
+					    	 <strong> <?php echo $donnees['m1']; ?>  vs </strong> 	 <strong> <?php echo $donnees['m2']; ?> </strong>
+					    	 <button id= "bouton" onclick="myFunction('bouton')" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
+							<button id="boutonX" onclick="myFunction('boutonX')" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
+							<button id= "bouton2" onclick="myFunction('bouton2')" value=<?php echo $donnees['cote2']; ?>> <?php echo $donnees['cote2']; ?></button>
+							
+					   </p>
+					<?php
+					}
+
+					$reponse->closeCursor(); // Termine le traitement de la requête
+
+					?>	
+
+			
 
 		</div>
 			<div id="cote"> <strong>Cote total</strong> </div>
@@ -283,8 +294,8 @@
 						<div class="gtco-widget">
 							<h3 id="Liens"> Liensss</h3>
 							<ul class="gtco-footer-links">
-								<li><a href="Informations.html">Comment ça marche ?</a></li>
-								<li><a href="Contact.html">Contactez nous.</a></li>
+								<li><a href="Informations.php">Comment ça marche ?</a></li>
+								<li><a href="Contact.php">Contactez nous.</a></li>
 								<li><a href="#">Plan du site</a></li>
 								<li><a href="#">Informations légales </a></li>
 								<li><a href="#">C.G.U</a></li>
