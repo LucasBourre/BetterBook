@@ -82,8 +82,8 @@
 					<div class="row row-mt-15em">
 
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
-							<span class="intro-text-small">Don't be shy</span>
-							<h1>Get In Touch</h1>	
+							<span class="intro-text-small">Ne soyez pas timide...</span>
+							<h1>Contactez nous!</h1>	
 						</div>
 						
 					</div>
@@ -99,12 +99,12 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="col-md-6 animate-box">
-					<h3>Get In Touch</h3>
+					<h3>Contactez nous!</h3>
 					<form action="#">
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label class="sr-only" for="name">Name</label>
-								<input type="text" id="name" class="form-control" placeholder="Your firstname">
+								<label class="sr-only" for="name">Prénom</label>
+								<input type="text" id="name" class="form-control" placeholder="Votre prénom">
 							</div>
 							
 						</div>
@@ -112,25 +112,25 @@
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="email">Email</label>
-								<input type="text" id="email" class="form-control" placeholder="Your email address">
+								<input type="text" id="email" class="form-control" placeholder="Votre adresse mail">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
-								<label class="sr-only" for="subject">Subject</label>
-								<input type="text" id="subject" class="form-control" placeholder="Your subject of this message">
+								<label class="sr-only" for="subject">Sujet</label>
+								<input type="text" id="subject" class="form-control" placeholder="L'objet de votre message">
 							</div>
 						</div>
 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="sr-only" for="message">Message</label>
-								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something"></textarea>
+								<textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Que voulez vous nous dire?"></textarea>
 							</div>
 						</div>
 						<div class="form-group">
-							<input type="submit" value="Send Message" class="btn btn-primary">
+							<input type="submit" value="Envoyer" class="btn btn-primary">
 						</div>
 
 					</form>		
@@ -138,12 +138,13 @@
 				<div class="col-md-5 col-md-push-1 animate-box">
 					
 					<div class="gtco-contact-info">
-						<h3>Contact Information</h3>
+						<h3>Information Contact</h3>
 						<ul>
-							<li class="address">198 West 21th Street, <br> Suite 721 New York NY 10016</li>
-							<li class="phone"><a href="tel://1234567920">+ 1235 2355 98</a></li>
-							<li class="email"><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
-							<li class="url"><a href="http://FreeHTML5.co">FreeHTML5.co</a></li>
+							<li class="address">12 rue Denis Papin, <br> 59 113 Seclin</li>
+							<li class="phone"><a href="tel://0612345678">+ 336 12 34 56 78</a></li>
+							<li class="email"><a href="mailto:BetterBookContact@gmail.com">BetterBookContact@gmail.com</a></li>
+							<li class="icon-facebook-with-circle"><a href="https://www.facebook.com/BetterBook-911540932320733/">BetterBook</a></li>
+							<li class="icon-twitter-with-circle"><a href="https://twitter.com/BetterBookFR">BetterBookFR</a></li>
 						</ul>
 					</div>
 
@@ -182,10 +183,10 @@
 						<div class="gtco-widget">
 							<h3>Contact</h3>
 							<ul class="gtco-quick-contact">
-								<li><a href="#"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
-								<li><a href="#"><i class="icon-mail2"></i> BetterBook@gmail.com</a></li>
-								<li><a href="#"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
-								<li><a href="#"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
+								<li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
+								<li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
+								<li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
+								<li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
 							</ul>
 						</div>
 					</div>
