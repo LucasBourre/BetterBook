@@ -91,39 +91,51 @@
 							<div class="form-wrap">
 								<div class="tab">
 									<ul class="tab-menu">
-										<!--<li class="active gtco-first"><a href="#" data-tab="signup">Inscription</a></li>-->
+										<li class="active gtco-first"><a href="#" data-tab="signup">Inscription</a></li>
 										<li class="gtco-second"><a href="#" data-tab="login">Connexion</a></li>
 									</ul>
 									<div class="tab-content">
-									<!--	<div class="tab-content-inner active" data-content="signup">
-											<form action="Inscription.php">
+										<div class="tab-content-inner active" data-content="signup">
+											<form method="post" action="fonctions/gestion_inscritption.php">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="username">Pseudo ou E-mail</label>
-														<input type="text" class="form-control" id="username">
+														<label for="username">Pseudo</label>
+														<input type="text" class="form-control" name="username">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="password">Mot de Passe</label>
-														<input type="password" class="form-control" id="password">
+														<input type="password" class="form-control" name="password">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="password2">Confirmez Mot de Passe</label>
-														<input type="password" class="form-control" id="password2">
+														<input type="password" class="form-control" name="password2">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="lastname">Nom</label>
+														<input type="text" class="form-control" name="lastname">
+													</div>
+												</div>
+												<div class="row form-group">
+													<div class="col-md-12">
+														<label for="firstname">Prénom</label>
+														<input type="text" class="form-control" name="firstname">
 													</div>
 												</div>
 
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary" value="Inscription">
+														<input type="submit" class="btn btn-primary" name="BT-inscription" value="Inscription">
 													</div>
 												</div>
-											</form>	
+											</form>		
 										</div>
-	-->	
+											
 										<div class="tab-content-inner" data-content="login">
 											<form method="post" action="fonctions/Connexion.php">
 												<div class="row form-group">
@@ -142,7 +154,7 @@
 												<div class="row form-group">
 													<div class="col-md-12">
 														<input type="submit" class="btn btn-primary" value="Connexion">
-														<input type="submit" class="btn btn-secondary" name="BT-inscription" value="Inscription" >
+														<!--<input type="submit" class="btn btn-secondary" name="BT-inscription" value="Inscription" >-->	
 														<!--<a href="#"><span>Connexion</span></a>-->	
 														
 													</div>
