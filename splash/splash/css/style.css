@@ -279,6 +279,7 @@ h1, h2, h3, h4, h5, h6, figure {
   letter-spacing: .15em;
   display: block;
   margin-bottom: 10px;
+  margin-top: 117px;
 }
 #gtco-header h1, #gtco-header h2 {
   margin: 0;
@@ -659,6 +660,7 @@ form label {
   letter-spacing: .15em;
   display: block;
   margin-bottom: 10px;
+  margin-top: 125px;
 }
 #gtco-header .display-tc h1, #gtco-header .display-tc h2,
 #gtco-counter .display-tc h1,

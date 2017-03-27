@@ -1,0 +1,140 @@
+#pronostic {
+    padding: 5px;
+    width: 1311px;
+    margin-left: -106px;
+    margin-top: -67px;
+}
+
+#ligue1 {
+   border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 150px;
+}
+
+#liga {
+   border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 193px;
+}
+#Premier-League{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 196px;
+}
+
+#calcio{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 168px;
+}
+
+#Bundesliga{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 219px;
+}
+
+#Ligue_des_Champions{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 170px;
+}
+
+#Europa_League{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 147px;	
+}
+
+#Matchs_Internationaux{
+	border: 1px solid #ddd;
+    border-radius: 29px;
+    padding: 5px;
+    width: 205px;	
+}
+
+#match{
+    padding: 10px;
+    height: 200px;
+    text-align: justify;}
+
+#foo{
+    visibility:hidden;
+}
+
+
+#bouton{
+    padding:0px;
+    width:80px;
+    height:30px;
+    margin-left:16px;
+
+}
+#bouton:hover{
+    cursor:pointer;
+    background:#9FDA90;
+    border:1px solid #6EB45C;
+}
+
+#bouton:active{
+    position:relative;
+    left:1px;
+    top:1px;
+}
+
+#boutonX{
+    padding:0px;
+    width:80px;
+    height:30px;
+    margin-left:16px;
+
+}
+#boutonX:hover{
+    cursor:pointer;
+    background:#9FDA90;
+    border:1px solid #6EB45C;
+}
+
+#boutonX:active{
+    position:relative;
+    left:1px;
+    top:1px;
+}
+
+#bouton2{
+    padding:0px;
+    width:80px;
+    height:30px;
+    margin-left:16px;
+
+}
+#bouton2:hover{
+    cursor:pointer;
+    background:#9FDA90;
+    border:1px solid #6EB45C;
+}
+
+#bouton2:active{
+    position:relative;
+    left:1px;
+    top:1px;
+}
+
+
+#cote{
+       margin-left: 950px;
+    margin-bottom: -76px;
+    margin-top: -46px;
+}
+#cotetotal{
+    margin-left: 1048px;
+    margin-bottom: -42px;
+    margin-top: 50px;
+}
