@@ -1,5 +1,7 @@
 <meta charset="utf-8"/>
 <?php
+
+	session_start();
 	require ('connectBD.php');
 
 	//gestion de l'inscription
@@ -20,21 +22,47 @@
 		echo $_POST['password2'];
 		//echo $_POST['birthdate'];
 		//echo $_POST['email'];
+		echo "<br>";
+		//echo (testPseudoCorrect($pseudo));
 		
-		//TO DO tests si données valides et cohérentes
-		if ($_POST['password'] <> $_POST['password2']) {
-			echo 'mots de passe ne correspondent pas';
+		if (testPseudoCorrect($pseudo)){
+			if ($_POST['password'] <> $_POST['password2']) {
+				echo 'mots de passe ne correspondent pas';
+			} else {
+				//inscription dans la base de données
+				$motDePasse = $_POST['password'];
+				global $connexion;
+				$var = $connexion->prepare("INSERT INTO UserProfil (nom, prenom, pseudo, mdp) values ('$nom', '$prenom', '$pseudo', '$motDePasse')");
+				$var->execute();
+				
+				$_SESSION['pseudo'] = $pseudo;
+				$_SESSION['connexion'] = 1;
+			}
 		} else {
-			//inscription dans la base de données
-			$motDePasse = $_POST['password'];
-			global $connexion;
-			$var = $connexion->prepare("INSERT INTO UserProfil (nom, prenom, pseudo, mdp) values ('$nom', '$prenom', '$pseudo', '$motDePasse')");
-			$var->execute();
+			echo "pseudo deja utilisé <br>";
 		}
+		//TO DO tests si données valides et cohérentes
+		
 		
 		
 		
 	} else {
 		Header('Location: ../Accueil.php');
+	}
+	
+	function testPseudoCorrect($ps){
+		$res = true;
+		
+		global $connexion;
+		$var = $connexion->prepare("SELECT pseudo FROM UserProfil");
+		$var->execute();
+		
+		while ($ligne = $var->fetch()){
+			if ($ligne['pseudo'] == $ps) {
+				$res = false;
+			}
+		}
+		
+		return $res;
 	}
 ?>
