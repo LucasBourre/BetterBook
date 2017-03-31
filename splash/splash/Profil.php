@@ -75,7 +75,7 @@ include ('connectBD.php');
                             <li><a href="Classement.php">Classement</a></li>
                             <li><a href="Informations.php">Comment Ca Marche ?</a></li>
                             <li><a href="Contact.php">Contact</a></li>
-                            <li class="btn-cta"><a href="#"><span>Connexion</span></a></li>
+                            <li class="btn-cta"><a href="Accueil.php"><span>Connexion</span></a></li>
                         </ul>
                     </div>
                 </div>
