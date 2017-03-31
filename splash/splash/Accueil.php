@@ -91,11 +91,11 @@
 							<div class="form-wrap">
 								<div class="tab">
 									<ul class="tab-menu">
-										<li class="active gtco-first"><a href="#" data-tab="signup">Inscription</a></li>
-										<li class="gtco-second"><a href="#" data-tab="login">Connexion</a></li>
+										<li class="active gtco-first"><a href="#" data-tab="login">Connexion</a></li>
+										<li class="gtco-second"><a href="#" data-tab="signup">Inscription</a></li>
 									</ul>
 									<div class="tab-content">
-										<div class="tab-content-inner active" data-content="signup">
+										<div class="tab-content-inner" data-content="signup">
 											<form method="post" action="fonctions/gestion_inscritption.php">
 												<div class="row form-group">
 													<div class="col-md-12">
@@ -136,7 +136,7 @@
 											</form>		
 										</div>
 											
-										<div class="tab-content-inner" data-content="login">
+										<div class="tab-content-inner active" data-content="login">
 											<form method="post" action="fonctions/Connexion.php">
 												<div class="row form-group">
 													<div class="col-md-12">
