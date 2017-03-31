@@ -113,7 +113,7 @@
 							<li><a href="Classement.php">Classement</a></li>
 							<li><a href="Informations.php">Comment Ca Marche ?</a></li>
 							<li><a href="Contact.php">Contact</a></li>
-							<li class="btn-cta"><a href="#"><span>Connexion</span></a></li>
+							<li class="btn-cta"><a href="Accueil.php#connexion"><span>Connexion</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -246,7 +246,7 @@
 			<h2 id="match">Les matchs</h2>
 				<?php
 					
-					require ('connectBD.php');
+					require ('fonctions/connectBD.php');
 				
 					global $connexion;
 					// On récupère tout le contenu de la table jeux_video
