@@ -48,30 +48,48 @@
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 	<body>
+	
 	<script type="text/javascript">
+		var matche = "1";
 
 		/** Fonction basculant la visibilité d'un élément dom
 		 * @parameter anId string l'identificateur de la cible à montrer, cacher
 		 */
-		function toggle(anId)
+		function toggle(anId,game)
 		{
 			node = document.getElementById(anId);
 			if (node.style.visibility=="hidden")
 			{
 				// Contenu caché, le montrer
 				node.style.visibility = "visible";
-				node.style.height = "auto";			// Optionnel rétablir la hauteur
+				node.style.height = "auto";
+				matche=game;								// Optionnel rétablir la hauteur
 			}
 			else
 			{
 				// Contenu visible, le cacher
 				node.style.visibility = "hidden";
-				node.style.height = "0";			// Optionnel libérer l'espace
+				node.style.height = "0";
+				matche="1";			// Optionnel libérer l'espace
 			}
-		}
 
+			var x = game;
+			alert(x);
+			$.ajax({
+                    type: "POST",
+                    url: 'Pronostiques.php',
+                    data: {voteid: x },
+                    success: function(data)
+                    {
+                       alert("success! X:" + data);
+                    }
+
+        });
+		}
+/**
 		function myFunction(id) {
 			var node = document.getElementById(id);
 			if (node.style.background =="rgb(159, 218, 144)"){
@@ -90,6 +108,37 @@
 			}
 		}
 
+
+			$(document).ready(function() {
+			  $(".bouton,.boutonX,.bouton2").hover(function() {
+				  $(this).css("background-color", "rgb(159, 218, 144)");
+   					 }, function(){
+    			$(this).css("background-color", "rgb(233, 233, 233)");
+
+					});    
+			});    
+			
+*/
+
+		$(document).ready(function() {
+		$("button").on('click', function(){
+			if($(this).css("background-color") == "rgb(159,218,144)"){  // rgb(159,218,144) = vert 
+				$(this).css("background-color","rgb(233, 233, 233)");   // rgb(233,233,233) = gris
+				var cote = parseFloat ($( this ).val());
+			 	$("#cotetotal").html(parseFloat($("#cotetotal").html()) / cote);
+			 }
+			 else {
+			 	 $(this).css("background-color","rgb(159, 218, 144)");
+			 	var cote = parseFloat ($( this ).val());
+			 	$("#cotetotal").html(parseFloat($("#cotetotal").html()) * cote);
+			 }
+			
+				});
+		});
+
+
+
+	
 
 
 	</script>
@@ -159,7 +208,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn"> 
 						<span class="icon">
-							<a href="#match" onclick="toggle('foo')"> <img id= "ligue1"  src="images/ligue1.png"/ > </a>
+							<a href="#match" onclick="toggle('foo','1')" ><img id= "ligue1" src="images/ligue1.png"/ > </a>
 							          													   <!-- liiiigggguuuueeee 1   -->
 						</span>
 						<h3>Ligue 1</h3>
@@ -170,7 +219,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="liga" src="images/Liga-bbva.jpg" />     <!-- liiiiggggaaaaaaaaaaaaaaaaaa   -->
+							<img id="liga"  src="images/Liga-bbva.jpg" />     <!-- liiiiggggaaaaaaaaaaaaaaaaaa   -->
 						</span>
 						<h3>Liga </h3>
 						<p>Le championnat d'Espagne de football.</p>
@@ -241,28 +290,38 @@
 		</div>
 	</div>
 
-		<div id ="foo" >
+		<div id ="foo">
 		<div id="gtco-features" class="border-bottom">
 			<h2 id="match">Les matchs</h2>
 				<?php
-					
+
+
 					require ('fonctions/connectBD.php');
 				
 					global $connexion;
+
+					if (isset($_POST['voteid'])) {
+    					 $x = $_POST['voteid'];
+     					echo $x;
+   						echo "ok";
+   						}else{
+   						echo 'no variable received';
+   						}
+					
 					// On récupère tout le contenu de la table jeux_video
 					$reponse = $connexion->prepare('select e1.nom as m1 ,e2.nom as m2,m.cote1,m.cote2,m.coteN from Matchs m join Equipes e1 on m.equipe1 = e1.id 
 													join Equipes e2 on m.equipe2 = e2.id');
 					$reponse->execute();
-
 						// On affiche chaque entrée une à une
 					while ($donnees = $reponse->fetch())
 					{
 					?>
 					    <p>
 					    	 <strong> <?php echo $donnees['m1']; ?>  vs </strong> 	 <strong> <?php echo $donnees['m2']; ?> </strong>
-					    	 <button id= "bouton" onclick="myFunction('bouton')" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
-							<button id="boutonX" onclick="myFunction('boutonX')" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
-							<button id= "bouton2" onclick="myFunction('bouton2')" value=<?php echo $donnees['cote2']; ?>> <?php echo $donnees['cote2']; ?></button>
+					    	 <button class="bouton" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
+							<button class="boutonX" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
+							<button class= "bouton2" value=<?php echo $donnees['cote2']; ?>> <?php echo $donnees['cote2']; ?></button>
+							
 							
 					   </p>
 					<?php
@@ -276,7 +335,7 @@
 
 		</div>
 			<div id="cote"> <strong>Cote total</strong> </div>
-			<div id="cotetotal">0</div>
+			<div id="cotetotal">1</div>
 		</div>
 
 		<footer id="gtco-footer" role="contentinfo">
