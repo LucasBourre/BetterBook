@@ -66,62 +66,63 @@
     text-align: justify;}
 
 #foo{
-    visibility:hidden;
+    visibility: hidden;
 }
 
 
-#bouton{
+.bouton{
     padding:0px;
     width:80px;
     height:30px;
     margin-left:16px;
 
+
 }
-#bouton:hover{
+.bouton:hover{
     cursor:pointer;
     background:#9FDA90;
     border:1px solid #6EB45C;
 }
 
-#bouton:active{
+.bouton:active{
     position:relative;
     left:1px;
     top:1px;
 }
 
-#boutonX{
+.boutonX{
     padding:0px;
     width:80px;
     height:30px;
     margin-left:16px;
 
 }
-#boutonX:hover{
+.boutonX:hover{
     cursor:pointer;
     background:#9FDA90;
     border:1px solid #6EB45C;
 }
 
-#boutonX:active{
+.boutonX:active{
     position:relative;
     left:1px;
     top:1px;
 }
 
-#bouton2{
+.bouton2{
     padding:0px;
     width:80px;
     height:30px;
     margin-left:16px;
 
 }
-#bouton2:hover{
+.bouton2:hover{
     cursor:pointer;
     background:#9FDA90;
     border:1px solid #6EB45C;
 }
 
-#bouton2:active{
+.bouton2:active{
     position:relative;
     left:1px;
     top:1px;
