@@ -97,7 +97,7 @@
 									</ul>
 									<div class="tab-content">
 										<div class="tab-content-inner" data-content="signup">
-											<form method="post" action="fonctions/gestion_inscription.php">
+											<form method="post" action="fonctions/gestion_inscritption.php">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="username">Pseudo</label>
@@ -141,14 +141,14 @@
 											<form method="post" action="fonctions/Connexion.php">
 												<div class="row form-group">
 													<div class="col-md-12">
-														<label for="usernamelogin">Pseudo ou E-mail</label>
-														<input type="text" class="form-control" id="usernamelogin">
+														<label for="usernamelogin">Pseudo</label>
+														<input type="text" class="form-control" name="pseudo" id="usernamelogin">
 													</div>
 												</div>
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="passwordlogin">Mot de Passe</label>
-														<input type="password" class="form-control" id="passwordlogin">
+														<input type="password" class="form-control" name="mdp" id="passwordlogin">
 													</div>
 												</div>
 
