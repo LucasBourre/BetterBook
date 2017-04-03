@@ -111,8 +111,31 @@
                     <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                         <div class="col-md-12">
                             Top 10 Global
-                       
-                        <p>____________________________________________________________________________________</p>
+                          <p> <?php
+					require ('fonctions/connectBD.php');
+					global $connexion;
+					
+					$reponse = $connexion->prepare(
+					'select pseudo , BeneficesG, tauxSuccesG
+					from UserProfil  
+					order by BeneficesG desc'
+					
+					);
+					$reponse->execute();
+					while ($donnees = $reponse->fetch())
+					{
+					?>
+					    <p>
+					    	<?php echo $donnees['pseudo']; ?>  A GAGNE <?php echo $donnees['BeneficesG']; ?> € avec un taux de succes de <?php echo $donnees['tauxSuccesG']; ?> %
+					   </p>
+					<?php
+					}
+
+					$reponse->closeCursor(); // Termine le traitement de la requête
+
+					?>	  </p>
+                        </div>
+                        <p>___________________________________________________________________________</p>
                     </div>
                 </div>
 
