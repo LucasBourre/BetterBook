@@ -109,15 +109,9 @@
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             Top 10 Global
-                        </div>
-                        <div class="col-md-4">
-                            Top 10 du mois
-                        </div>
-                        <div class="col-md-4">
-                            Top 10 de la semaine
-                        </div>
+                       
                         <p>____________________________________________________________________________________</p>
                     </div>
                 </div>
