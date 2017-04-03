@@ -1,4 +1,7 @@
 <?php
+
+require ('connectBD.php');
+
 // on teste si le visiteur a soumis le formulaire de connexion
 /*if (isset($_POST['connexion']) && $_POST['connexion'] == 'Connexion') {
 	if ((isset($_POST['login']) && !empty($_POST['login'])) && (isset($_POST['pass']) && !empty($_POST['pass']))) {
@@ -29,13 +32,53 @@
 	else {
 		$erreur = 'Probème dans la base de données : plusieurs membres ont les mêmes identifiants de connexion.';
 	}
-}else*/if (isset($_POST['BT-inscription']) && $_POST['BT-inscription'] == 'Inscription') {
+}else*//*if (isset($_POST['BT-inscription']) && $_POST['BT-inscription'] == 'Inscription') {
 	header('Location: ../Inscription.php');
 	echo ("Boojur");
 }
 	else {
 	//$erreur = 'Au moins un des champs est vide.';
 	echo ('ksdc');
+	}*/
+
+session_start();
+/*if (isset($_POST['BT-connexion']) && ($_POST['BT-connexion'] == 'Connexion')) {*/	
+
+	if((isset($_POST['pseudo']) && !empty($_POST['pseudo'])) && (isset($_POST['mdp']) && !empty($_POST['mdp']))) {
+		
+		echo $_POST['pseudo'];
+		echo $_POST['mdp'];
+		if (entreesValides($_POST['pseudo'], $_POST['mdp'])){
+			$_SESSION['connexion'] = 1;
+			$_SESSION['pseudo'] = $_POST['pseudo'];
+			
+			echo ('connecté');
+			Header('Location: ../Profil.php');
+		} else {
+			echo "entrées non valides";
+		}
+		
+	} else { echo "entrées non completes";}
+/*} else {
+	echo ('pas bon');
+}*/
+
+function entreesValides($ps, $mot){
+	
+	$res = false;
+	
+	global $connexion;
+	$requete = $connexion->prepare("SELECT pseudo, mdp FROM UserProfil");
+				$requete->execute();
+	
+	while($ligne = $requete->fetch()){
+		if (($ligne['pseudo'] == $ps) && ($ligne['mdp'] == $mot)) {
+			
+			$res = true;
+		}
 	}
+	return $res;
+
+}
 
 ?>
