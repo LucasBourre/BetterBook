@@ -6,7 +6,9 @@
  * Date: 27/03/2017
  * Time: 15:13
  */
-include ('connectBD.php');
+include ('fonctions/connectBD.php');
+    session_start();
+
 ?>
 <html>
 <head>
@@ -109,24 +111,34 @@ include ('connectBD.php');
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-6 animate-box">
-                            <h3>Voici le profil de <?php if (isset($_POST)) {
-                                    echo $_POST['username'];
-                                } ?>  </h3>
+                            <h3>Voici le profil de  </h3>
                             <form action="#">
                                 <div class="row form-group">
                                     <div class="col-md-12">
+                                     <?php
+                                        require ('fonctions/connectBD.php');
+                                        // session_start();
+                                        global $connexion;
+                                        global $pseudo;
+
+                                      
+                                        // On récupère tout le contenu de la table matchs
+                                        $reponse = $connexion->prepare(
+                                            'select nom, prenom from UserProfil  where pseudo =' + $pseudo );
+                                        $reponse->execute();
+                                            // On affiche chaque entrée une à une
+                                        while ($donnees = $reponse->fetch())
+                                        {
+                                            ?>
+                                            <p>
+                                            <strong> <?php echo $donnees['nom']; echo $donnees['prenom']; ?> </strong>
+                                            </p>
                                         <?php
-                                        //On verifie que lidentifiant de lutilisateur est defini
-                                        if(isset($_GET['id']))
-                                        {
-                                        $id = intval($_GET['id']);
-                                        //On verifie que lutilisateur existe
-                                        $dn = mysql_query('select username, nom, prenom, email from UserProfil where ID="'.$id.'"');
-                                        if(mysql_num_rows($dn)>0)
-                                        {
-                                        $dnn = mysql_fetch_array($dn);
-                                        //On affiche les donnees de lutilisateur
-                                        ?>
+                                        }
+
+                                $reponse->closeCursor(); // Termine le traitement de la requête
+
+                                ?>  
                                     </div>
 
                                 </div>
