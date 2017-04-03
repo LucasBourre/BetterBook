@@ -97,7 +97,7 @@
 									</ul>
 									<div class="tab-content">
 										<div class="tab-content-inner" data-content="signup">
-											<form method="post" action="fonctions/gestion_inscritption.php">
+											<form method="post" action="fonctions/gestion_inscription.php">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="username">Pseudo</label>
