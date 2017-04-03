@@ -154,7 +154,7 @@
 
 												<div class="row form-group">
 													<div class="col-md-12">
-														<input type="submit" class="btn btn-primary" value="Connexion">
+														<input type="submit" class="btn btn-primary" name ="BT-connexion" value="Connexion">
 														<!--<input type="submit" class="btn btn-secondary" name="BT-inscription" value="Inscription" >-->	
 														<!--<a href="#"><span>Connexion</span></a>-->	
 														
