@@ -109,9 +109,9 @@
 	function getClassementTaux($ps){
 	
 		global $connexion;
-		$res = 0;
+		$res = 1;
 		$fini = false;
-		$requete = $connexion->prepare("SELECT tauxSuccesG FROM UserProfil order by tauxSuccesG desc");
+		$requete = $connexion->prepare('SELECT pseudo, tauxSuccesG FROM UserProfil order by tauxSuccesG desc');
 		$requete->execute();
 		
 		while($ligne = $requete->fetch()){
@@ -120,6 +120,7 @@
 					$fini = true;
 				} else {
 					$res = $res + 1;
+				}
 			}
 		}
 		return $res;
@@ -130,9 +131,9 @@
 	function getClassementBenefice($ps){
 	
 		global $connexion;
-		$res = 0;
+		$res = 1;
 		$fini = false;
-		$requete = $connexion->prepare("SELECT BeneficesG FROM UserProfil order by BeneficesG desc");
+		$requete = $connexion->prepare("SELECT pseudo, BeneficesG FROM UserProfil order by BeneficesG desc");
 		$requete->execute();
 		
 		while($ligne = $requete->fetch()){
@@ -141,6 +142,7 @@
 					$fini = true;
 				} else {
 					$res = $res + 1;
+				}
 			}
 		}
 		return $res;
