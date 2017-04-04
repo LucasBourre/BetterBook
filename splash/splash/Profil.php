@@ -52,6 +52,8 @@ include ('fonctions/connectBD.php');
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Theme icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -93,9 +95,9 @@ include ('fonctions/connectBD.php');
                     <div class="col-md-12 col-md-offset-0 text-left">
                         <div class="row row-mt-15em">
 
-                            <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+                            <div class="col-md-10 mt-text animate-box" data-animate-effect="fadeInUp">
                                 <span class="intro-text-small"> </span>
-                                <h1>Profil</h1>
+                                <h1>Bienvenue sur votre profil</h1>
                             </div>
 
                         </div>
@@ -110,40 +112,156 @@ include ('fonctions/connectBD.php');
             <div class="gtco-container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-6 animate-box">
-                            <h3>Voici le profil de  </h3>
+                        <div class="gtco-container">
+
                             <form action="#">
                                 <div class="row form-group">
                                     <div class="col-md-12">
+                                        <h1>
                                      <?php
                                         require ('fonctions/connectBD.php');
                                         // session_start();
                                         global $connexion;
-                                        global $pseudo;
-
-                                      
+                                        
+                                        $ps=$_SESSION['pseudo'];
                                         // On récupère tout le contenu de la table matchs
-                                        $reponse = $connexion->prepare(
-                                            'select nom, prenom from UserProfil  where pseudo =' + $pseudo );
+                                        $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
                                         $reponse->execute();
                                             // On affiche chaque entrée une à une
+                                     
+
                                         while ($donnees = $reponse->fetch())
                                         {
-                                            ?>
-                                            <p>
-                                            <strong> <?php echo $donnees['nom']; echo $donnees['prenom']; ?> </strong>
-                                            </p>
-                                        <?php
-                                        }
 
-                                $reponse->closeCursor(); // Termine le traitement de la requête
 
-                                ?>  
+                                            ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?> </STRONG> <?php
+
+                                        }   
+                                      
+                                        $reponse->closeCursor(); // Termine le traitement de la requête
+
+                                        ?>  
+                                        </h1>
                                     </div>
-
                                 </div>
 
                             </form>
+
+
+                         <div id="gtco-counter" class="gtco-section">
+                                <div class="gtco-section animated">
+
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+                                            <h2>Quelques statistiques de vos performances</h2>
+                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <?php
+                                        require ('fonctions/connectBD.php');
+                                        require ('fonctions/userGet.php');
+                                        // session_start();
+                                        global $connexion;
+                                        
+                                        $ps=$_SESSION['pseudo'];
+                                        // On récupère tout le contenu de la table matchs
+                                        $reponse = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
+                                        $reponse->execute();
+                                        $reponse2 = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
+                                        $reponse2->execute();
+                                            // On affiche chaque entrée une à une
+                                     
+
+                                        while ($donnees = $reponse->fetch())
+                                        {
+                                            if ($donnees['nbCombine'] == 0)
+                                                {
+                                                    echo "Faites des paris pour acceder à vos statistiques!";
+
+                                                } else{?>
+
+                                                    <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-futbol-o"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['nbCombine']?> data-speed="5000" data-refresh-interval="5">1</span>
+                                                            <span class="counter-label">Paris enregistrés</span>
+
+                                                        </div>
+                                                    </div>
+                                                     <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-money"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['miseMoy']?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Moyenne des mises</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-line-chart"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['coteMoy']?> data-speed="100" data-refresh-interval="500">1</span>
+                                                            <span class="counter-label">Côte moyenne</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-percent"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['tauxSuccesG']?> data-speed="5000" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Taux de réussite</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-trophy"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementTaux($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Votre classement BetterBook (% réussite)</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-euro"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['BeneficesG']?> data-speed="5000" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Montant des gains</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-trophy"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Votre classement BetterBook (bénéfices)</span>
+
+                                                        </div>
+                                                    </div>
+                                                    
+                                                   
+                                                    <?php
+                                                }
+                                        }   
+                                      
+                                        $reponse->closeCursor(); // Termine le traitement de la requête
+
+                                        ?>  
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
