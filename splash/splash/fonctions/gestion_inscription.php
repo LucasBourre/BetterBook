@@ -25,23 +25,26 @@
 		echo "<br>";
 		//echo (testPseudoCorrect($pseudo));
 		
-		if (testPseudoCorrect($pseudo)){
-			if ($_POST['password'] <> $_POST['password2']) {
-				echo 'mots de passe ne correspondent pas';
+		if (testToutRempli()) {
+			/*if (testPseudoCorrect($pseudo)){
+				if ($_POST['password'] <> $_POST['password2']) {
+					echo 'mots de passe ne correspondent pas';
+				} else {
+					//inscription dans la base de données
+					$motDePasse = $_POST['password'];
+					global $connexion;
+					$var = $connexion->prepare("INSERT INTO UserProfil (nom, prenom, pseudo, mdp) values ('$nom', '$prenom', '$pseudo', '$motDePasse')");
+					$var->execute();
+					
+					$_SESSION['pseudo'] = $pseudo;
+					$_SESSION['connexion'] = 1;
+				}
 			} else {
-				//inscription dans la base de données
-				$motDePasse = $_POST['password'];
-				global $connexion;
-				$var = $connexion->prepare("INSERT INTO UserProfil (nom, prenom, pseudo, mdp) values ('$nom', '$prenom', '$pseudo', '$motDePasse')");
-				$var->execute();
-				
-				$_SESSION['pseudo'] = $pseudo;
-				$_SESSION['connexion'] = 1;
-			}
+				echo "pseudo deja utilisé <br>";
+			}*/ echo "ouais";
 		} else {
-			echo "pseudo deja utilisé <br>";
+			echo "tous les champs n'ont pas été remplis";
 		}
-		//TO DO tests si données valides et cohérentes
 		
 		
 		
@@ -64,5 +67,22 @@
 		}
 		
 		return $res;
+	}
+	
+	function testToutRempli(){
+		$res = false;
+		if(isset($_POST['lastname']) && !empty($_POST['lastname'])){
+			if (isset($_POST['firstname']) && !empty($_POST['firstname'])) {
+				if (isset($_POST['username']) && !empty($_POST['username'])) {
+					if (isset($_POST['password']) && !empty($_POST['password'])) {
+						if (isset($_POST['password2']) && !empty($_POST['password2'])) {
+							$res = true;
+						}
+					}
+				}
+			}
+		}
+		return $res;
+				 
 	}
 ?>
