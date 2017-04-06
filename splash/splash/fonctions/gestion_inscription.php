@@ -15,18 +15,18 @@
 		//$dateNaiss = $POST['birthdate'];
 		//$email = $POST['email'];
 		
-		echo $_POST['lastname'];
+		/*echo $_POST['lastname'];
 		echo $_POST['firstname'];
 		echo $_POST['username'];
 		echo $_POST['password'];
-		echo $_POST['password2'];
+		echo $_POST['password2'];*/
 		//echo $_POST['birthdate'];
 		//echo $_POST['email'];
-		echo "<br>";
+		//echo "<br>";
 		//echo (testPseudoCorrect($pseudo));
 		
 		if (testToutRempli()) {
-			/*if (testPseudoCorrect($pseudo)){
+			if (testPseudoCorrect($pseudo)){
 				if ($_POST['password'] <> $_POST['password2']) {
 					echo 'mots de passe ne correspondent pas';
 				} else {
@@ -41,7 +41,7 @@
 				}
 			} else {
 				echo "pseudo deja utilisé <br>";
-			}*/ echo "ouais";
+			} echo "ouais";
 		} else {
 			echo "tous les champs n'ont pas été remplis";
 		}
