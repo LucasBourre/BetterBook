@@ -29,6 +29,9 @@
 			if (testPseudoCorrect($pseudo)){
 				if ($_POST['password'] <> $_POST['password2']) {
 					echo 'mots de passe ne correspondent pas';
+					$_SESSION['erreur_co'] = true;
+					$_SESSION['msg_erreur'] = "les mots de passe saisis ne correspondent pas!";
+					Header('Location: ../Accueil.php');
 				} else {
 					//inscription dans la base de données
 					$motDePasse = $_POST['password'];
@@ -41,9 +44,17 @@
 				}
 			} else {
 				echo "pseudo deja utilisé <br>";
-			} echo "ouais";
+				$_SESSION['erreur_co'] = true;
+				$_SESSION['msg_erreur'] = "pseudo déjà utilisé!";
+				$_SESSION['connexion'] = 0;
+				Header('Location: ../Accueil.php');
+			}
 		} else {
 			echo "tous les champs n'ont pas été remplis";
+			$_SESSION['erreur_co'] = true;
+			$_SESSION['msg_erreur'] = "veuillez remplir tous les champs!";
+			$_SESSION['connexion'] = 0;
+			Header('Location: ../Accueil.php');
 		}
 		
 		

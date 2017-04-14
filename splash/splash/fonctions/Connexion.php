@@ -51,14 +51,24 @@ session_start();
 		if (entreesValides($_POST['pseudo'], $_POST['mdp'])){
 			$_SESSION['connexion'] = 1;
 			$_SESSION['pseudo'] = $_POST['pseudo'];
-			
+			$_SESSION['erreur_co'] = false;
+			$_SESSION['msg_erreur'] = "";
 			echo ('connecté');
 			Header('Location: ../Profil.php');
 		} else {
 			echo "entrées non valides";
+			$_SESSION['erreur_co'] = true;
+			$_SESSION['msg_erreur'] = "pseudo ou mot de passe non valide!";
+			$_SESSION['connexion'] = 0;
+			Header('Location: ../Accueil.php');
 		}
 		
-	} else { echo "entrées non completes";}
+	} else { echo "entrées non completes";
+			$_SESSION['erreur_co'] = true;
+			$_SESSION['msg_erreur'] = "veuillez remplir tous les champs!";
+			$_SESSION['connexion'] = 0;
+			Header('Location: ../Accueil.php');
+	}
 /*} else {
 	echo ('pas bon');
 }*/
