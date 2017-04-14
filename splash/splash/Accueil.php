@@ -96,8 +96,13 @@
 										<li class="gtco-second"><a href="#" data-tab="signup">Inscription</a></li>
 									</ul>
 									<div class="tab-content">
+										<?php
+												session_start();
+												if ($_SESSION['erreur_co'])
+													echo "<font color='red'>".$_SESSION['msg_erreur']."</font>";
+											?>
 										<div class="tab-content-inner" data-content="signup">
-											<form method="post" action="fonctions/gestion_inscritption.php">
+											<form method="post" action="fonctions/gestion_inscription.php">
 												<div class="row form-group">
 													<div class="col-md-12">
 														<label for="username">Pseudo</label>
@@ -174,6 +179,11 @@
 			</div>
 		</div>
 	</header>
+	
+	<?php
+		$_SESSION['erreur_co'] = false;
+		$_SESSION['msg_erreur'] = "";
+	?>
 	
 	<div class="gtco-section border-bottom">
 		<div class="gtco-container">
