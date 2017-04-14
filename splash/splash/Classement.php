@@ -1,6 +1,11 @@
 <!DOCTYPE HTML>
 <html>
-<head>
+<head>	
+	
+	
+<!-- classement -->
+<script src="js/classement.js"></script>
+	
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>BetterBook &mdash; Just Bet It</title>
@@ -41,9 +46,12 @@
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+    
+    <!-- Style CSS Classement -->
+    <link rel="stylesheet" href="css/Classement.css" type="text/css">
+    
+    
+    
 </head>
 <body>
 
@@ -108,32 +116,47 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+                    <div class="text-center gtco-heading">
                         <div class="col-md-12">
-                            Top 10 Global
-                          <p> <?php
-					require ('fonctions/connectBD.php');
-					global $connexion;
-					
-					$reponse = $connexion->prepare(
-					'select pseudo , BeneficesG, tauxSuccesG
-					from UserProfil  
-					order by BeneficesG desc'
-					
-					);
-					$reponse->execute();
-					while ($donnees = $reponse->fetch())
-					{
-					?>
-					    <p>
-					    	<?php echo $donnees['pseudo']; ?>  A GAGNE <?php echo $donnees['BeneficesG']; ?> € avec un taux de succes de <?php echo $donnees['tauxSuccesG']; ?> %
-					   </p>
-					<?php
-					}
+                            <p>Top 10 Global</p>
+                            <table class="container" id="myTable">
+								<thead>
+								<tr> 
+									<th onclick="sortTablePseudo()"><h1> Pseudo <h1></th>
+									<th onclick="sortTableBenefice()"><h1>Benefices</h1></th>
+									<th onclick="sortTableCote()"><h1>Côte moyenne</h1></th>
+									<th onclick="sortTableReussite()"><h1>% de reussite</h1></th>
+								</tr>
+								</thead>
+								<tbody>
+							 <?php
+						require ('fonctions/connectBD.php');
+						global $connexion;
+						
+						$reponse = $connexion->prepare(
+						'select pseudo , BeneficesG, tauxSuccesG,coteMoy
+						from UserProfil  
+						order by BeneficesG desc'
+						
+						);
+						$reponse->execute();
+						while ($donnees = $reponse->fetch())
+						{
+						?>
+							<tr>
+								<td><?php echo $donnees['pseudo']; ?></td>
+								<td><?php echo $donnees['BeneficesG']; ?> € </td>
+								<td><?php echo $donnees['coteMoy']; ?></td> 
+								<td><?php echo $donnees['tauxSuccesG']; ?> % </td>
+						   </tr>
+						<?php
+						}
 
 					$reponse->closeCursor(); // Termine le traitement de la requête
 
-					?>	  </p>
+					?>	  
+						</tbody>
+						</table>
                         </div>
                         <p>___________________________________________________________________________</p>
                     </div>
@@ -223,6 +246,8 @@
 <script src="js/magnific-popup-options.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
+ <!-- Modernizr JS -->
+<script src="js/modernizr-2.6.2.min.js"></script>
 
 </body>
 </html>
