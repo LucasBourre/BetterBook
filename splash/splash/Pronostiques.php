@@ -53,41 +53,46 @@
 	<body>
 	
 	<script type="text/javascript">
-		var matche = "1";
+		var match='0';
 
 		/** Fonction basculant la visibilité d'un élément dom
 		 * @parameter anId string l'identificateur de la cible à montrer, cacher
 		 */
 		function toggle(anId,game)
-		{
+		{   
 			node = document.getElementById(anId);
-			if (node.style.visibility=="hidden")
+			if(match==game){
+			// Contenu visible, le cacher
+				node.style.visibility = "hidden";
+				node.style.height = "0";
+				
+											// Optionnel libérer l'espace
+			} 
+			else 
 			{
 				// Contenu caché, le montrer
 				node.style.visibility = "visible";
 				node.style.height = "auto";
-				matche=game;								// Optionnel rétablir la hauteur
-			}
-			else
-			{
-				// Contenu visible, le cacher
-				node.style.visibility = "hidden";
-				node.style.height = "0";
-				matche="1";			// Optionnel libérer l'espace
+												// Optionnel rétablir la hauteur
 			}
 
 			var x = game;
-			alert(x);
 			$.ajax({
                     type: "POST",
-                    url: 'Pronostiques.php',
+                    url: 'Php/PhpPronostique.php',
                     data: {voteid: x },
                     success: function(data)
                     {
-                       alert("success! X:" + data);
+                       $('#liste-match').html(data);
                     }
 
         });
+			if(match==x) {
+				match='0';
+			}
+			else {
+				match=x;
+			}
 		}
 /**
 		function myFunction(id) {
@@ -119,27 +124,6 @@
 			});    
 			
 */
-
-		$(document).ready(function() {
-		$("button").on('click', function(){
-			if($(this).css("background-color") == "rgb(159,218,144)"){  // rgb(159,218,144) = vert 
-				$(this).css("background-color","rgb(233, 233, 233)");   // rgb(233,233,233) = gris
-				var cote = parseFloat ($( this ).val());
-			 	$("#cotetotal").html(parseFloat($("#cotetotal").html()) / cote);
-			 }
-			 else {
-			 	 $(this).css("background-color","rgb(159, 218, 144)");
-			 	var cote = parseFloat ($( this ).val());
-			 	$("#cotetotal").html(parseFloat($("#cotetotal").html()) * cote);
-			 }
-			
-				});
-		});
-
-
-
-	
-
 
 	</script>
 		
@@ -219,7 +203,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="liga"  src="images/Liga-bbva.jpg" />     <!-- liiiiggggaaaaaaaaaaaaaaaaaa   -->
+								<a href="#match" onclick="toggle('foo','4')" > <img id="liga"  src="images/Liga-bbva.jpg" />  </a>   <!-- liiiiggggaaaaaaaaaaaaaaaaaa   -->
 						</span>
 						<h3>Liga </h3>
 						<p>Le championnat d'Espagne de football.</p>
@@ -229,7 +213,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="Premier-League" src="images/Premier-League-Logo-shield.png" />   <!--  Premier-Leagueeeeeeeeeeeeeeeeeee   -->
+							<a href="#match" onclick="toggle('foo','2')" > <img id="Premier-League" src="images/Premier-League-Logo-shield.png" />  </a> <!--  Premier-Leagueeeeeeeeeeeeeeeeeee   -->
 						</span>
 						<h3>Premier League</h3>
 						<p>Le Championnat d'Angleterre de football. </p>
@@ -239,7 +223,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="calcio" src="images/calcio.png" />     <!--  calciooooooooooooooooooooo   -->
+								<a href="#match" onclick="toggle('foo','5')" > <img id="calcio" src="images/calcio.png" />   </a>  <!--  calciooooooooooooooooooooo   -->
 						</span>
 						<h3>Calcio</h3>
 						<p>Le championnat d'Italie de football. </p>
@@ -249,7 +233,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="Bundesliga" src="images/Bundesliga-logo-2010.png" />     <!--  bundesliiiiiiiiiiiiiiiiiiigggaaaaaaaaaaaaa   -->
+							<a href="#match" onclick="toggle('foo','3')" > <img id="Bundesliga" src="images/Bundesliga-logo-2010.png" />  </a>   <!--  bundesliiiiiiiiiiiiiiiiiiigggaaaaaaaaaaaaa   -->
 						</span>
 						<h3>Bundesliga</h3>
 						<p>Le Championnat d'Allemagne de football. </p>
@@ -259,7 +243,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="Ligue_des_Champions" src="images/UEFA_Ligue_des_Champions.svg.png" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+							<a href="#match" onclick="toggle('foo','6')" ><img id="Ligue_des_Champions" src="images/UEFA_Ligue_des_Champions.svg.png" /> </a>    <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
 						</span>
 						<h3>Ligue des Champions</h3>
 						<p>La Ligue des champions de l'UEFA. </p>
@@ -269,7 +253,7 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="Europa_League" src="images/UEFA_Europa_League_logo.png" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+							<a href="#match" onclick="toggle('foo','7')" ><img id="Europa_League" src="images/UEFA_Europa_League_logo.png" /> </a>     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
 						</span>
 						<h3>Europa League</h3>
 						<p>La Ligue Europa de l'UEFA. </p>
@@ -279,7 +263,7 @@
 					<div class="col-md-3 col-sm-6">
 					<div class="feature-center animate-box" data-animate-effect="fadeIn">
 						<span class="icon">
-							<img id="Matchs_Internationaux" src="images/international-friendly-match-logo.jpg" />     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
+							<a href="#match" onclick="toggle('foo','8')" ><img id="Matchs_Internationaux" src="images/international-friendly-match-logo.jpg" /></a>     <!--  ligue des championnnnnnnnnnnnnnnnssss   -->
 						</span>
 						<h3>Matchs Internationaux</h3>
 						<p>Matchs_Internationaux entre des selections nationales</p>
@@ -291,51 +275,20 @@
 	</div>
 
 		<div id ="foo">
-		<div id="gtco-features" class="border-bottom">
-			<h2 id="match">Les matchs</h2>
-				<?php
-
-
-					require ('fonctions/connectBD.php');
-				
-					global $connexion;
-
-					if (isset($_POST['voteid'])) {
-    					 $x = $_POST['voteid'];
-     					echo $x;
-   						echo "ok";
-   						}else{
-   						echo 'no variable received';
-   						}
-					
-					// On récupère tout le contenu de la table jeux_video
-					$reponse = $connexion->prepare('select e1.nom as m1 ,e2.nom as m2,m.cote1,m.cote2,m.coteN from Matchs m join Equipes e1 on m.equipe1 = e1.id 
-													join Equipes e2 on m.equipe2 = e2.id');
-					$reponse->execute();
-						// On affiche chaque entrée une à une
-					while ($donnees = $reponse->fetch())
-					{
-					?>
-					    <p>
-					    	 <strong> <?php echo $donnees['m1']; ?>  vs </strong> 	 <strong> <?php echo $donnees['m2']; ?> </strong>
-					    	 <button class="bouton" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
-							<button class="boutonX" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
-							<button class= "bouton2" value=<?php echo $donnees['cote2']; ?>> <?php echo $donnees['cote2']; ?></button>
-							
-							
-					   </p>
-					<?php
-					}
-
-					$reponse->closeCursor(); // Termine le traitement de la requête
-
-					?>	
-
+			<div id="gtco-features" class="border-bottom">
+				<h2 id="match">Les matchs</h2>
+				<div id ="liste-match"> </div>
+				<div id="mise">
+	  	 		<strong> Votre mise </strong> <input type="number" name="mise" />
+	  	 		<button id="BoutonValider"> Parier </button>
+	  	 		<button id="BoutonAnnuler"> Annuler </button>
+				 
+				<div id="cote">  <strong>Cote total</strong> </div>
+			<div id="cotetotal">0</div>
+	  	 	</div>
+	  	 	</div>
 			
-
-		</div>
-			<div id="cote"> <strong>Cote total</strong> </div>
-			<div id="cotetotal">1</div>
+			
 		</div>
 
 		<footer id="gtco-footer" role="contentinfo">
@@ -344,6 +297,8 @@
 
 					<div class="col-md-4">
 						<div class="gtco-widget">
+
+
 							<h3>A propos de  <span class="footer-logo">BetterBook<span>.<span></span></h3>
 							<p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
 						</div>
@@ -395,6 +350,7 @@
 	</div>
 	
 	<!-- jQuery -->
+	<script src="js/JsPronostique"></script>
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
