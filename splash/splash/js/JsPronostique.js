@@ -57,7 +57,7 @@
 			var mise = $('input[name="mise"]').val();
 			$.ajax({
                     type: "POST",
-                    url: 'Php/PhpPronostiqueInserer.php',
+                    url: 'fonctions/PhpPronostiqueInserer.php',
                     data: {cote:cote , mise:mise, pari:jsonString},
                     success: function(data)
                     {

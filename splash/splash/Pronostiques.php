@@ -79,7 +79,7 @@
 			var x = game;
 			$.ajax({
                     type: "POST",
-                    url: 'Php/PhpPronostique.php',
+                    url: 'fonctions/PhpPronostique.php',
                     data: {voteid: x },
                     success: function(data)
                     {
