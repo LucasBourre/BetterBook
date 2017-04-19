@@ -1,4 +1,4 @@
-<script src="js/JsPronostique"></script>
+<script src="js/JsPronostique.js"></script>
 <?php
 
 

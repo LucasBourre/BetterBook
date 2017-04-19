@@ -374,7 +374,7 @@ include ('fonctions/connectBD.php');
 	</div>
 	
 	<!-- jQuery -->
-	<script src="js/JsPronostique"></script>
+	<script src="js/JsPronostique.js"></script>
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
