@@ -1,10 +1,13 @@
 <script src="js/JsPronostique.js"></script>
 <?php
-
+					 session_start();
 
 					require ('connectBD.php');
+					 include 'userGet.php';
 				
 					global $connexion;
+
+					if ($_SESSION['connexion'] == 1){
 					///// inserer dans la base de donnée 
 					if (isset($_POST['mise']) AND isset($_POST['cote'])) {
     					 $mise = $_POST['mise'];
@@ -15,11 +18,15 @@
 						 $maxid->execute();
 						 $donnees = $maxid->fetch();
 						 $donnees1 = (int)$donnees['max(id)'] + 1 ;
+						 
+						 $pseudo = $_SESSION['pseudo'];
+						 $id = getID($pseudo);
+
 
 						 $insererCombine = $connexion->prepare("insert into Combine(ID,IDProfile,coteTotale,mise) values(:ID,:IDProfile,:coteTotale,:mise)");
 						 $insererCombine->execute(array(
 						 	'ID' => $donnees1,
-						 	'IDProfile' => 2,
+						 	'IDProfile' => $id,
 						 	'coteTotale' =>$cote1,
 						 	'mise' => $mise1
 						 	));
@@ -29,10 +36,10 @@
 
 						 echo $donnees1;
 
-						 $maxIDPU = $connexion->prepare("select max(id) FROM Combine");
+						 $maxIDPU = $connexion->prepare("select max(id) FROM PronoUser");
 						 $maxIDPU->execute();
-						 $donneesPU = $maxIDPU->fetch();
-						 $donneesPU = (int)$donnees['max(id)'] + 1 ;
+						 $donneesPUF = $maxIDPU->fetch();
+						 $donneesPU = (int)$donneesPUF['max(id)'] + 1 ;
 						 $data = json_decode(stripslashes($_POST['pari']));
 						 foreach($data as $d){
   							$d  = get_object_vars($d);
@@ -56,8 +63,9 @@
 						 
    						}
   
+					}
+				
 					
-					// On récupère tout le contenu de la table jeux_video
 				?>	
 
 
