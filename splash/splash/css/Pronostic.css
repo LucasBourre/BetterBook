@@ -84,7 +84,8 @@
     border:1px solid #6EB45C;
 }
 
-.bouton:active{
+.bouton:active, .active {
+    background-color:#9FDA90;
     position:relative;
     left:1px;
     top:1px;
@@ -103,7 +104,8 @@
     border:1px solid #6EB45C;
 }
 
-.boutonX:active{
+.boutonX:active, .active {
+    background-color:#9FDA90;
     position:relative;
     left:1px;
     top:1px;
@@ -122,12 +124,12 @@
     border:1px solid #6EB45C;
 }
 
-.bouton2:active{
+.bouton2:active, .active {
+    background-color:#9FDA90;
     position:relative;
     left:1px;
     top:1px;
 }
-
 
 #cote{
        margin-left: 950px;
@@ -139,3 +141,5 @@
     margin-bottom: -42px;
     margin-top: 50px;
 }
+
+#etat{}
