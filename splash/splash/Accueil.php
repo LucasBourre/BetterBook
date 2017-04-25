@@ -1,5 +1,15 @@
-
 <!DOCTYPE HTML>
+<?php
+/**
+ * Created by PhpStorm.
+ * User: clemi
+ * Date: 27/03/2017
+ * Time: 15:13
+ */
+include ('fonctions/connectBD.php');
+    session_start();
+
+?>
 <html>
 	<head>
 	<meta charset="utf-8">
@@ -59,16 +69,29 @@
 		<div class="gtco-container">
 			
 			<div class="row">
-				<div class="col-sm-4 col-xs-12">
+				<div class="col-sm-2 col-xs-12">
 					<div id="gtco-logo"><a href="Accueil.php">BetterBook <em>.</em></a></div>
 				</div>
-				<div class="col-xs-8 text-right menu-1">
+				<div class="col-xs-10 text-right menu-1">
 					<ul>
+						<?php
+                            if ($_SESSION['connexion'] == 1)
+                            { ?>
+                            <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg" /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
+                        <?php } ?>
 						<li><a href="Pronostiques.php">Pronostiques</a></li>
 						<li><a href="Classement.php">Classement</a></li>
 						<li><a href="Informations.php">Comment Ca Marche ?</a></li>
 						<li><a href="Contact.php">Contact</a></li>
-						<li class="btn-cta"><a href="Accueil.php"><span>Connexion</span></a></li>
+						<li class="btn-cta"><a href="fonctions/Deconnexion.php"><span>
+								<?php
+									if ($_SESSION['connexion'] == 1){
+										echo "Déconnexion";
+									} else {
+										echo "Connexion";
+									}
+								?>
+								</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -148,7 +171,6 @@
 														<input type="text" class="form-control" name="firstname">
 													</div>
 												</div>
-
 												<div class="row form-group">
 													<div class="col-md-12">
 														<input type="submit" class="btn btn-primary" name="BT-inscription" value="Inscription">
@@ -171,7 +193,6 @@
 														<input type="password" class="form-control" name="mdp" id="passwordlogin">
 													</div>
 												</div>
-
 												<div class="row form-group">
 													<div class="col-md-12">
 														<input type="submit" class="btn btn-primary" name ="BT-connexion" value="Connexion">

@@ -1,56 +1,58 @@
 <!DOCTYPE HTML>
 <html>
 <head>	
-	
-	
-<!-- classement -->
-<script src="js/classement.js"></script>
-	
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>BetterBook &mdash; Just Bet It</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Projet PAI pour parier en ligne" />
-    <meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques" />
-    <meta name="author" content="BetterBook Corp" />
+    <?php
+    include ('fonctions/connectBD.php');
+        session_start();
 
-    <!-- Facebook and Twitter integration -->
-    <meta property="og:title" content=""/>
-    <meta property="og:image" content=""/>
-    <meta property="og:url" content=""/>
-    <meta property="og:site_name" content=""/>
-    <meta property="og:description" content=""/>
-    <meta name="twitter:title" content="" />
-    <meta name="twitter:image" content="" />
-    <meta name="twitter:url" content="" />
-    <meta name="twitter:card" content="" />
+    ?>	
+    	
+    <!-- classement -->
+    <script src="js/classement.js"></script>
+    	
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>BetterBook &mdash; Just Bet It</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Projet PAI pour parier en ligne" />
+        <meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques" />
+        <meta name="author" content="BetterBook Corp" />
 
-    <!-- font Roboto -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+        <!-- Facebook and Twitter integration -->
+        <meta property="og:title" content=""/>
+        <meta property="og:image" content=""/>
+        <meta property="og:url" content=""/>
+        <meta property="og:site_name" content=""/>
+        <meta property="og:description" content=""/>
+        <meta name="twitter:title" content="" />
+        <meta name="twitter:image" content="" />
+        <meta name="twitter:url" content="" />
+        <meta name="twitter:card" content="" />
 
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
-    <!-- Themify Icons-->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+        <!-- font Roboto -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
+        <!-- Animate.css -->
+        <link rel="stylesheet" href="css/animate.css">
+        <!-- Icomoon Icon Fonts-->
+        <link rel="stylesheet" href="css/icomoon.css">
+        <!-- Themify Icons-->
+        <link rel="stylesheet" href="css/themify-icons.css">
+        <!-- Bootstrap  -->
+        <link rel="stylesheet" href="css/bootstrap.css">
 
-    <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+        <!-- Magnific Popup -->
+        <link rel="stylesheet" href="css/magnific-popup.css">
 
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
-    
-    <!-- Style CSS Classement -->
-    <link rel="stylesheet" href="css/Classement.css" type="text/css">
-    
-    
+        <!-- Owl Carousel  -->
+        <link rel="stylesheet" href="css/owl.carousel.min.css">
+        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+        <!-- Theme style  -->
+        <link rel="stylesheet" href="css/style.css">
+        
+        <!-- Style CSS Classement -->
+        <link rel="stylesheet" href="css/Classement.css" type="text/css">
     
 </head>
 <body>
@@ -65,17 +67,31 @@
             <div class="gtco-container">
 
                 <div class="row">
-                    <div class="col-sm-4 col-xs-12">
+                    <div class="col-sm-2 col-xs-12">
                         <div id="gtco-logo"><a href="Accueil.php">BetterBook <em>.</em></a></div>
                     </div>
-                    <div class="col-xs-8 text-right menu-1">
-                        <ul>
+                    <div class="col-xs-10 text-right menu-1">
+                        <ul> 
+                            <?php
+                            if ($_SESSION['connexion'] == 1)
+                            { ?>
+                            <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg" /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
+                            <?php } ?>
                             <li><a href="Pronostiques.php">Pronostiques</a></li>
                             <li><a href="Classement.php">Classement</a></li>
                             <li><a href="Informations.php">Comment Ca Marche ?</a></li>
                             <li><a href="Contact.php">Contact</a></li>
-                            <li class="btn-cta"><a href="Accueil.php"><span>Connexion</span></a></li>
+                            <li class="btn-cta"><a href="fonctions/Deconnexion.php"><span>
+                                <?php
+                                    if ($_SESSION['connexion'] == 1){
+                                        echo "Déconnexion";
+                                    } else {
+                                        echo "Connexion";
+                                    }
+                                ?>
+                                </span></a></li>
                         </ul>
+                        
                     </div>
                 </div>
 
@@ -95,7 +111,6 @@
                                 <span class="intro-text-small">La Ligue 1 des parieurs, c'est ici</span>
                                 <h1> Classement des pronostiqueurs</h1>
                             </div>
-
                         </div>
 
 
