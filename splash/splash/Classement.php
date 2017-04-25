@@ -75,7 +75,7 @@
                             <?php
                             if ($_SESSION['connexion'] == 1)
                             { ?>
-                            <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg" /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
+                            <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg"  width=50px /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
                             <?php } ?>
                             <li><a href="Pronostiques.php">Pronostiques</a></li>
                             <li><a href="Classement.php">Classement</a></li>
