@@ -18,6 +18,9 @@ body {
   color: #777;
   background: #ececec;
 }
+#Utilisateur{
+    width: 30px;
+}
 
 #page {
   position: relative;
@@ -1862,3 +1865,4 @@ form label {
 #affsemainelien{
   font-style:italic ;
 }
+
