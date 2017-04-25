@@ -92,15 +92,30 @@
 							<div class="form-wrap">
 								<div class="tab">
 									<ul class="tab-menu">
-										<li class="active gtco-first"><a href="#" data-tab="login">Connexion</a></li>
-										<li class="gtco-second"><a href="#" data-tab="signup">Inscription</a></li>
+									<?php 
+									session_start();
+									if ($_SESSION['connexion'] == 1){
+										echo '<li class="active gto-first"><a href="#">'.$_SESSION['pseudo'].'</a></li>';
+									} else {
+										echo '<li class="active gtco-first"><a href="#" data-tab="login">Connexion</a></li>
+											<li class="gtco-second"><a href="#" data-tab="signup">Inscription</a></li>';
+									}
+									?>
 									</ul>
 									<div class="tab-content">
 										<?php
-												session_start();
+												
 												if ($_SESSION['erreur_co'])
 													echo "<font color='red'>".$_SESSION['msg_erreur']."</font>";
 											?>
+										<?php
+											require ('fonctions/userGet.php');
+											if ($_SESSION['connexion'] == 1){
+												$gains = getBenefices($_SESSION['pseudo']);
+												echo 'Vos gains actuels: '.$gains.'€';
+												echo '<br>A REMPLIR !';
+											} else {
+												echo '
 										<div class="tab-content-inner" data-content="signup">
 											<form method="post" action="fonctions/gestion_inscription.php">
 												<div class="row form-group">
@@ -166,7 +181,9 @@
 													</div>
 												</div>
 											</form>	
-										</div>
+										</div>';
+											}
+										?>
 
 									</div>
 								</div>
