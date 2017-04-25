@@ -162,14 +162,19 @@ include ('fonctions/connectBD.php');
 							<li><a href="Classement.php">Classement</a></li>
 							<li><a href="Informations.php">Comment Ca Marche ?</a></li>
 							<li><a href="Contact.php">Contact</a></li>
-							<li class="btn-cta"><a href="fonctions/Deconnexion.php"><span>
+							<li class="btn-cta"><a href="fonctions/Deconnexion.php"><span id="etat">
 								<?php
-									if ($_SESSION['connexion'] == 1){
-										echo "Déconnexion";
+									if ($_SESSION['connexion'] == 1) {
+									?>
+									Déconnexion
+									<?php
 									} else {
-										echo "Connexion";
+									?>
+									Connexion
+									<?php
 									}
-								?>
+									?>
+
 								</span></a></li>
 						</ul>
 					</div>
