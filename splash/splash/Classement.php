@@ -53,7 +53,8 @@
         
         <!-- Style CSS Classement -->
         <link rel="stylesheet" href="css/Classement.css" type="text/css">
-    
+        
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -159,7 +160,7 @@
 						{
 						?>
 							<tr>
-								<td><?php echo $donnees['pseudo']; ?></td>
+								<td class="pseudoClassement"> <?php echo $donnees['pseudo'];?></td>
 								<td><?php echo $donnees['BeneficesG']; ?> € </td>
 								<td><?php echo $donnees['coteMoy']; ?></td> 
 								<td><?php echo $donnees['tauxSuccesG']; ?> % </td>
@@ -245,6 +246,7 @@
 </div>
 
 <!-- jQuery -->
+<script src="js/JsProfil_Recherche.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- jQuery Easing -->
 <script src="js/jquery.easing.1.3.js"></script>
