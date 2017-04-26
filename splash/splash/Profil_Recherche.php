@@ -136,6 +136,7 @@ include ('fonctions/connectBD.php');
                                         global $connexion;
                                         
                                         $ps=$_GET['pseudo'];
+
                                         // On récupère tout le contenu de la table matchs
                                         $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
                                         $reponse->execute();
@@ -192,7 +193,7 @@ include ('fonctions/connectBD.php');
                                         {
                                             if ($donnees['nbCombine'] == 0)
                                                 {
-                                                    echo "Faites des paris pour acceder à vos statistiques!";
+                                                    echo "Cet utilisateur n'a pas encore réalisé des pronostiques";
 
                                                 } else{?>
 
