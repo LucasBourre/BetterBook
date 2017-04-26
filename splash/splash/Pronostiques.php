@@ -105,36 +105,8 @@ include ('fonctions/connectBD.php');
 				match=x;
 			}
 		}
-/**
-		function myFunction(id) {
-			var node = document.getElementById(id);
-			if (node.style.background =="rgb(159, 218, 144)"){
-				node.style.background = "rgb(233, 233, 233)";
-				document.getElementById("cotetotal").innerHTML=parseFloat(document.getElementById("cotetotal").innerHTML) / parseFloat(node.value);
-
-			}
-			else {
-				node.style.background = "rgb(159, 218, 144)";
-				var cote = parseFloat(document.getElementById("cotetotal").innerHTML);
-				if(cote == 0)
-				{ document.getElementById("cotetotal").innerHTML=parseFloat(node.value);}
-				else {
-					document.getElementById("cotetotal").innerHTML = parseFloat(document.getElementById("cotetotal").innerHTML) * parseFloat(node.value);
-				}
-			}
-		}
 
 
-			$(document).ready(function() {
-			  $(".bouton,.boutonX,.bouton2").hover(function() {
-				  $(this).css("background-color", "rgb(159, 218, 144)");
-   					 }, function(){
-    			$(this).css("background-color", "rgb(233, 233, 233)");
-
-					});    
-			});    
-			
-*/
 
 	</script>
 		
@@ -176,6 +148,13 @@ include ('fonctions/connectBD.php');
 									?>
 
 								</span></a></li>
+								<li > 
+									<form id="formulaire_Recherche" action="Profil_Recherche.php">
+										<input type="text" id="recherche" name="pseudo" placeholder="Recherche">
+									  <input type="submit" id="butonRecherche" value=">>"> 
+									  </form>
+
+								</li>
 						</ul>
 					</div>
 				</div>
