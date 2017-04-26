@@ -1,11 +1,5 @@
 <!DOCTYPE HTML>
 <?php
-/**
- * Created by PhpStorm.
- * User: clemi
- * Date: 27/03/2017
- * Time: 15:13
- */
 include ('fonctions/connectBD.php');
     session_start();
 
