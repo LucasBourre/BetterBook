@@ -72,7 +72,9 @@
 		$var->execute();
 		
 		while ($ligne = $var->fetch()){
-			if ($ligne['pseudo'] == $ps) {
+			$data = strtolower($ligne['pseudo']);
+			$pslow = strtolower($ps);
+			if ($data == $pslow) {
 				$res = false;
 			}
 		}
