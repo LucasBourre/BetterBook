@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
 <html>
-<head>	
+<head>
+    <!-- fonctions php -->
     <?php
     include ('fonctions/connectBD.php');
         session_start();
 
-    ?>	
+    ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>BetterBook &mdash; Just Bet It</title>
@@ -151,7 +152,19 @@
                          <ul>
 							 
                          <li onclick="dropdown('AddMatch');">Ajouter un Match</li>
-							<div id="AddMatch"> Ici on ajoute un match</div>
+							<div id="AddMatch">
+                                <form action="fonctions/AddMatch.php" method="post">
+                                    <p> Championnat (1 : Ligue 1 / 2 : PL / 3 : Bundes / 4 : Liga / 5 : Serie A ) : <input type="text" name="Championnat" /></p>
+                                    <p>Equipe Domicile : <input type="text" name="Eq1" /></p>
+                                    <p>Equipe Exterieur : <input type="text" name="Eq2" /></p>
+                                    <p>Cote Domicile : <input type="text" name="Cote1" /></p>
+                                    <p>Cote Nul : <input type="text" name="CoteN" /></p>
+                                    <p>Cote Exterieur : <input type="text" name="Cote2" /></p>
+                                    <p>Date Match ( de type YEAR-MO-JR ): <input type="text" name="Date" /></p>
+                                    <p>Heure Debut ( de type hh:mm:ss) : <input type="text" name="HeureDebut" /></p>
+                                    <p><input type="submit" name="btn-ajouterMatch" value="Ajouter"></p>
+                                </form>
+                            </div>
 							
                          <li onclick="dropdown('ModMatch');">Mettre le score d'un match</li>
 							<div id="ModMatch"> Ici on met a jour un match </div>
