@@ -30,10 +30,10 @@
       <file leaf-file-name="Classement.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="129" column="68" lean-forward="true" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
+            <state relative-caret-position="153">
+              <caret line="132" column="85" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="85" />
               <folding>
-                <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+                <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
               </folding>
             </state>
           </provider>
@@ -42,8 +42,8 @@
       <file leaf-file-name="Classement.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/splash/splash/css/Classement.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+            <state relative-caret-position="85">
+              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -79,8 +79,8 @@
         <option value="$PROJECT_DIR$/splash/splash/css/AdminPanel.css" />
         <option value="$PROJECT_DIR$/splash/splash/fonctions/AddMatch.php" />
         <option value="$PROJECT_DIR$/splash/splash/PanelAdmin.php" />
-        <option value="$PROJECT_DIR$/splash/splash/css/Classement.css" />
         <option value="$PROJECT_DIR$/splash/splash/js/classement.js" />
+        <option value="$PROJECT_DIR$/splash/splash/css/Classement.css" />
         <option value="$PROJECT_DIR$/splash/splash/Classement.php" />
       </list>
     </option>
@@ -114,6 +114,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -163,28 +164,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="json" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BetterBook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BetterBook" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="splash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="splash" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -213,7 +192,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -661,11 +639,12 @@
       <workItem from="1493663952143" duration="2825000" />
       <workItem from="1494421176371" duration="2643000" />
       <workItem from="1494426394711" duration="3821000" />
+      <workItem from="1494438461929" duration="453000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23916000" />
+    <option name="totallyTimeSpent" value="24369000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -696,7 +675,6 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32550693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24947807" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -709,6 +687,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32550693" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -736,7 +715,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -780,7 +759,7 @@
         <state relative-caret-position="2346">
           <caret line="138" column="25" lean-forward="false" selection-start-line="138" selection-start-column="25" selection-end-line="138" selection-end-column="25" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -797,7 +776,7 @@
         <state relative-caret-position="2210">
           <caret line="130" column="25" lean-forward="true" selection-start-line="130" selection-start-column="25" selection-end-line="130" selection-end-column="25" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -814,7 +793,7 @@
         <state relative-caret-position="2125">
           <caret line="125" column="21" lean-forward="false" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -831,7 +810,7 @@
         <state relative-caret-position="2125">
           <caret line="125" column="21" lean-forward="true" selection-start-line="125" selection-start-column="21" selection-end-line="125" selection-end-column="21" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -848,7 +827,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>
@@ -975,28 +954,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/splash/splash/js/classement.js" />
     <entry file="file://$PROJECT_DIR$/splash/splash/css/Classement.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/splash/splash/js/classement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="85">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="129" column="68" lean-forward="true" selection-start-line="129" selection-start-column="68" selection-end-line="129" selection-end-column="68" />
+        <state relative-caret-position="153">
+          <caret line="132" column="85" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="85" />
           <folding>
-            <marker date="1494430196813" expanded="true" signature="6136:6290" ph="select pseud... UserProfil" />
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
         </state>
       </provider>

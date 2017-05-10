@@ -130,7 +130,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center gtco-heading">
                             <p>Top Classement</p>
-                            <table id="myTable"  cellspacing="0" width="100%" class="display">
+                            <table id="myTable"  cellspacing="0" width="100%" class="cell-border">
                                 <thead>
                                 <tr>
                                     <th><h1> Pseudo </h1></th>
@@ -268,7 +268,7 @@
                 "sProcessing":     "Traitement en cours...",
                 "sSearch":         "Rechercher&nbsp;:",
                 "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
-                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
+                "sInfo":           "Affichage de l'utilisateur _START_ &agrave; _END_ ",
                 "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
                 "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
                 "sInfoPostFix":    "",
