@@ -1,4 +1,5 @@
 <?php
+
 //require ('fonctions/connectBD.php');
 	require ('connectBD.php');
 	
@@ -190,4 +191,31 @@
             <?php
 		}
 	}
+	
+	function getCountFollowers($ps){
+		global $connexion;
+		$requete = $connexion->prepare(
+		'SELECT COUNT(ID_Follower) as nbFollower
+		FROM Abonnement
+		WHERE ID_Pronostiqueur = (SELECT ID
+								FROM UserProfil
+								WHERE pseudo = "'.$ps.'")');
+		$requete->execute();
+		$donnees = $requete->fetch();
+		return $donnees['nbFollower'];
+	}
+	
+	function getCountFollowed($ps){
+		global $connexion;
+		$requete = $connexion->prepare(
+		'SELECT COUNT(ID_Pronostiqueur) as nbFollowed
+		FROM Abonnement
+		WHERE ID_Follower = (SELECT ID
+								FROM UserProfil
+								WHERE pseudo = "'.$ps.'")');
+		$requete->execute();
+		$donnees = $requete->fetch();
+		return $donnees['nbFollowed'];
+	}
+
 ?>
