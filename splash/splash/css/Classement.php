@@ -6,7 +6,6 @@
     session_start();
 
     ?>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>BetterBook &mdash; Just Bet It</title>
@@ -14,8 +13,7 @@
     <meta name="description" content="Projet PAI pour parier en ligne"/>
     <meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques"/>
     <meta name="author" content="BetterBook Corp"/>
-    <link rel="icon" type="image/png" href="images/favicon.png" />
-    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /><![endif]-->
+
 
     <!-- font Roboto -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -127,45 +125,47 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12 text-center gtco-heading">
-                            <p>Top Classement</p>
-                            <table id="myTable"  cellspacing="0" width="100%" class="display">
-                                <thead>
-                                <tr>
-                                    <th><h1> Pseudo </h1></th>
-                                    <th><h1>Benefices</h1></th>
-                                    <th><h1>Côte moyenne</h1></th>
-                                    <th><h1>% de reussite</h1></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                require('fonctions/connectBD.php');
-                                global $connexion;
+                    <div class="text-center gtco-heading">
+                        <div class="col-md-12">
+                            <p>Top 10 Global</p>
+                                    <table id="myTable" cellspacing="0" class="display">
+                                        <thead>
+                                        <tr>
+                                            <th onclick="sortTablePseudo()"><h1> Pseudo </h1></th>
+                                            <th onclick="sortTableBenefice()"><h1>Benefices</h1></th>
+                                            <th onclick="sortTableCote()"><h1>Côte moyenne</h1></th>
+                                            <th onclick="sortTableReussite()"><h1>% de reussite</h1></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <?php
+                                        require('fonctions/connectBD.php');
+                                        global $connexion;
 
-                                $reponse = $connexion->prepare(
-                                    'select pseudo , BeneficesG, tauxSuccesG,coteMoy
+                                        $reponse = $connexion->prepare(
+                                            'select pseudo , BeneficesG, tauxSuccesG,coteMoy
                                 from UserProfil  
                                 order by BeneficesG desc'
 
-                                );
-                                $reponse->execute();
-                                while ($donnees = $reponse->fetch()) {
-                                    ?>
-                                    <tr>
-                                        <td class="pseudoClassement"> <?php echo $donnees['pseudo']; ?></td>
-                                        <td><?php echo $donnees['BeneficesG']; ?> €</td>
-                                        <td><?php echo $donnees['coteMoy']; ?></td>
-                                        <td><?php echo $donnees['tauxSuccesG']; ?> %</td>
-                                    </tr>
-                                    <?php
-                                }
+                                        );
+                                        $reponse->execute();
+                                        while ($donnees = $reponse->fetch()) {
+                                            ?>
+                                            <tr>
+                                                <td class="pseudoClassement"> <?php echo $donnees['pseudo']; ?></td>
+                                                <td><?php echo $donnees['BeneficesG']; ?> €</td>
+                                                <td><?php echo $donnees['coteMoy']; ?></td>
+                                                <td><?php echo $donnees['tauxSuccesG']; ?> %</td>
+                                            </tr>
+                                            <?php
+                                        }
 
-                                $reponse->closeCursor(); // Termine le traitement de la requête
+                                        $reponse->closeCursor(); // Termine le traitement de la requête
 
-                                ?>
-                                </tbody>
-                            </table>
+                                        ?>
+                                        </tbody>
+                                    </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -254,36 +254,15 @@
 <script src="js/main.js"></script>
 <!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
+<!-- classement -->
+<script src="js/classement.js"></script>
 <!-- DataTables.js -->
 <script src="js/jquery.dataTables.min.js"></script>
 
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#myTable').DataTable( {
-            "oLanguage": {
-                "sProcessing":     "Traitement en cours...",
-                "sSearch":         "Rechercher&nbsp;:",
-                "sLengthMenu":     "Afficher _MENU_ &eacute;l&eacute;ments",
-                "sInfo":           "Affichage de l'&eacute;l&eacute;ment _START_ &agrave; _END_ sur _TOTAL_ &eacute;l&eacute;ments",
-                "sInfoEmpty":      "Affichage de l'&eacute;l&eacute;ment 0 &agrave; 0 sur 0 &eacute;l&eacute;ment",
-                "sInfoFiltered":   "(filtr&eacute; de _MAX_ &eacute;l&eacute;ments au total)",
-                "sInfoPostFix":    "",
-                "sZeroRecords":    "Aucun &eacute;l&eacute;ment &agrave; afficher",
-                "sEmptyTable":     "Aucune donn&eacute;e disponible dans le tableau",
-                "sLoadingRecords": "Chargement en cours...",
-                "oPaginate": {
-                    "sFirst": "Première page",
-                    "sLast": "Dernière page",
-                    "sNext": "Page suivante",
-                    "sPrevious": "Page précédente"
-                },
-                "oAria": {
-                    "sSortAscending":  ": activer pour trier la colonne par ordre croissant",
-                    "sSortDescending": ": activer pour trier la colonne par ordre d&eacute;croissant"
-                }
-            }
-        } );
+        $('#myTable').DataTable();
     } );
 </script>
 
