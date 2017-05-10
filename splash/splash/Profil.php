@@ -262,7 +262,7 @@ include ('fonctions/connectBD.php');
                                                             <span class="icon">
                                                                 <i class="fa fa-address-book-o" aria-hidden="true"></i>
                                                             </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowers($ps);?> data-speed="100" data-refresh-interval="50">1</span>
                                                             <span class="counter-label">Abonnés</span>
 
                                                         </div>
@@ -272,7 +272,7 @@ include ('fonctions/connectBD.php');
                                                             <span class="icon">
                                                                 <i class="fa fa-address-book" aria-hidden="true"></i>
                                                             </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowed($ps);?> data-speed="100" data-refresh-interval="50">1</span>
                                                             <span class="counter-label">Abonnement</span>
 
                                                         </div>
