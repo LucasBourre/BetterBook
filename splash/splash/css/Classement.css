@@ -1,7 +1,82 @@
 @charset "UTF-8";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 
-#myTable{
-    background-color: #2e6da4;
-    font-family:"Open Sans";
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color:#ffffff;
+    background-color:#1F2739;
+}
+
+
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.cell-border th h1 {
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+    color: #ffffff;
+}
+
+.cell-border td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.cell-border {
+    text-align: left;
+    overflow: hidden;
+    width: 80%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 8em 0;
+}
+
+.cell-border td, .cell-border th {
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
+    text-align:center;
+}
+
+.cell-border tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+
+.cell-border tr:nth-child(even) {
+    background-color: #2C3446;
+}
+
+.cell-border th {
+    background-color: #d9534f;
+}
+
+.cell-border td:first-child { color: #FB667A; }
+
+.cell-border tr:hover {
+    background-color: #464A52;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.cell-border td:hover {
+    background-color: #ffffff;
+    color: #403E10;
+    font-weight: bold;
+    box-shadow: #ffffff -1px 1px, #ffffff -2px 2px, #ffffff -3px 3px, #ffffff -4px 4px, #ffffff -5px 5px, #ffffff -6px 6px;
+
+}
+
+@media (max-width: 800px) {
+    .cell-border td:nth-child(4),
+    .cell-border th:nth-child(4) { display: none; }
 }

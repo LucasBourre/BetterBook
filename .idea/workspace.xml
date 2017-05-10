@@ -30,21 +30,11 @@
       <file leaf-file-name="Classement.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="132" column="85" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="85" />
+            <state relative-caret-position="459">
+              <caret line="132" column="89" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="89" />
               <folding>
                 <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Classement.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/splash/splash/css/Classement.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -80,8 +70,8 @@
         <option value="$PROJECT_DIR$/splash/splash/fonctions/AddMatch.php" />
         <option value="$PROJECT_DIR$/splash/splash/PanelAdmin.php" />
         <option value="$PROJECT_DIR$/splash/splash/js/classement.js" />
-        <option value="$PROJECT_DIR$/splash/splash/css/Classement.css" />
         <option value="$PROJECT_DIR$/splash/splash/Classement.php" />
+        <option value="$PROJECT_DIR$/splash/splash/css/Classement.css" />
       </list>
     </option>
   </component>
@@ -114,8 +104,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -192,7 +180,9 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -640,11 +630,12 @@
       <workItem from="1494421176371" duration="2643000" />
       <workItem from="1494426394711" duration="3821000" />
       <workItem from="1494438461929" duration="453000" />
+      <workItem from="1494449217708" duration="779000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24369000" />
+    <option name="totallyTimeSpent" value="25148000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -710,6 +701,24 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/splash/splash/css/Classement.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -957,16 +966,16 @@
     <entry file="file://$PROJECT_DIR$/splash/splash/js/classement.js" />
     <entry file="file://$PROJECT_DIR$/splash/splash/css/Classement.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+        <state relative-caret-position="51">
+          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/splash/splash/Classement.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="132" column="85" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="85" />
+        <state relative-caret-position="459">
+          <caret line="132" column="89" lean-forward="false" selection-start-line="132" selection-start-column="85" selection-end-line="132" selection-end-column="89" />
           <folding>
             <marker date="1494438909704" expanded="true" signature="6145:6299" ph="select pseud... UserProfil" />
           </folding>
