@@ -54,6 +54,7 @@ include ('fonctions/connectBD.php');
     <link rel="stylesheet" href="css/style.css">
     <!-- Theme icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link rel="stylesheet" href="css/Classement.css" type="text/css">
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -128,33 +129,27 @@ include ('fonctions/connectBD.php');
                         <div class="gtco-container">
 
                             <form action="#">
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <h1>
-                                     <?php
-                                        require ('fonctions/connectBD.php');
-                                        // session_start();
-                                        global $connexion;
-                                        
-                                        $ps=$_SESSION['pseudo'];
-                                        // On récupère tout le contenu de la table matchs
-                                        $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
-                                        $reponse->execute();
-                                            // On affiche chaque entrée une à une
-                                     
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+                                       <h1>
+                                        <?php
+                                            require ('fonctions/connectBD.php');
+                                            global $connexion;
+                                            
+                                            $ps=$_SESSION['pseudo'];
+                                            // On récupère juste le nom et prenom de la personne connectée
+                                            $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
+                                            $reponse->execute();                                     
 
-                                        while ($donnees = $reponse->fetch())
-                                        {
-
-
-                                            ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?> </STRONG> <?php
-
-                                        }   
-                                      
-                                        $reponse->closeCursor(); // Termine le traitement de la requête
+                                            while ($donnees = $reponse->fetch())
+                                            {
+                                                ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?>  </STRONG> <?php
+                                            }   
+                                          
+                                            $reponse->closeCursor(); // Termine le traitement de la requête
 
                                         ?>  
-                                        </h1>
+                                       </h1>
                                     </div>
                                 </div>
 
@@ -262,7 +257,26 @@ include ('fonctions/connectBD.php');
 
                                                         </div>
                                                     </div>
-                                                    
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Abonnés</span>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                <i class="fa fa-address-book" aria-hidden="true"></i>
+                                                            </span>
+                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                            <span class="counter-label">Abonnement</span>
+
+                                                        </div>
+                                                    </div>
                                                    
                                                     <?php
                                                 }
@@ -271,7 +285,41 @@ include ('fonctions/connectBD.php');
                                         $reponse->closeCursor(); // Termine le traitement de la requête
 
                                         ?>  
+                                        <p>___________________________________________________________________________</p>
+
                                     </div>
+                                    <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <table class="container" id="myTable">
+                                                    <thead>
+                                                    <tr> 
+                                                        <th onclick="sortTablePseudo()"><h1> Abonnés <h1></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                             getFollowers($ps);
+                                                        ?>    
+                                                    </tbody>
+                                                </table>
+                                            </div>                                     
+                                            <div class="col-md-6 col-sm-6">
+                                                <table class="container" id="myTable">
+                                                    <thead>
+                                                    <tr> 
+                                                        <th onclick="sortTablePseudo()"><h1> Abonnement <h1></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <?php
+                                                            getFollowed($ps);
+                                                        ?>    
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                    </div>
+
+
                                 </div>
                             </div>
 
