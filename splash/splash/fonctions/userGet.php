@@ -1,5 +1,4 @@
 <?php
-
 //require ('fonctions/connectBD.php');
 	require ('connectBD.php');
 	
@@ -154,35 +153,41 @@
 	function getFollowed($ps){
 		global $connexion;
 		$requete = $connexion->prepare(
-		"SELECT pseudo
-		FROM UserProfil
-		WHERE ID IN (SELECT ID_Pronostiqueur
-					FROM Abonnement
-					WHERE ID_Follower = (SELECT ID
-										FROM UserProfil
-										WHERE pseudo = $ps))");
+		'SELECT pseudo
+        FROM UserProfil
+        WHERE ID IN (SELECT ID_Pronostiqueur
+            		FROM Abonnement
+                    WHERE ID_Follower = (SELECT ID
+                                         FROM UserProfil
+                                         WHERE pseudo = "'.$ps.'"))');
 		$requete->execute();
 		
 		while($ligne = $requete->fetch()){
-			echo "<tr> $ligne['pseudo'] </tr>";
+			?>
+			<tr>
+                <td class="pseudoAbonnement"> <?php echo $ligne['pseudo'];?></td>                                          
+            </tr>
+            <?php
 		}
 	}
-
 	/*retourne des ligne de tableau contenant les pseudo des personnes qui suivent l'utilisateur en paramètre*/
 	function getFollowers($ps){
 		global $connexion;
 		$requete = $connexion->prepare(
-		"SELECT pseudo
+		'SELECT pseudo
 		FROM UserProfil
 		WHERE ID IN (SELECT ID_Follower
 					FROM Abonnement
 					WHERE ID_Pronostiqueur = (SELECT ID
 										FROM UserProfil
-										WHERE pseudo = $ps))");
+										WHERE pseudo = "'.$ps.'"))');
 		$requete->execute();
 		while($ligne = $requete->fetch()){
-			echo "<tr> $ligne['pseudo'] </tr>";
+			?><tr>
+                <td class="pseudoAbonnés"> <?php echo $ligne['pseudo'];?></td>
+                                                                    
+              </tr>
+            <?php
 		}
 	}
-
 ?>
