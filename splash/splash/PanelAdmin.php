@@ -130,13 +130,13 @@
                                 <li onclick="dropdown('AddUser');">Ajouter un Utilisateur</li>
                                 <div id="AddUser" class="text-center">
                                     <form action="fonctions/PanelAdmin/AddUser.php" method="post">
-                                        <row> Nom : <input type="text" name="Nom" /> </row>
-                                        <row> Prenom : <input type="text" name="Prenom" /> </row>
-                                        <row> Pseudo : <input type="text" name="Pseudo" /> </row>
-                                        <row> Mot de passe : <input type="password" name="MotDePasse" /> </row>
-                                        <row> Date Naissance : <input type="date" name="DateNais" /> </row>
-                                        <row> Mail : <input type="email" name="Mail" /> </row>
-                                        <BR><row><input type="submit" name="btn-ajouterUser" value="Ajouter"></row>
+                                       <BR> <row> Nom : <input type="text" name="Nom" /> </row>
+                                       <BR> <row> Prenom : <input type="text" name="Prenom" /> </row>
+                                       <BR> <row> Pseudo : <input type="text" name="Pseudo" /> </row>
+                                       <BR> <row> Mot de passe : <input type="password" name="MotDePasse" /> </row>
+                                       <BR> <row> Date Naissance : <input type="date" name="DateNais" /> </row>
+                                       <BR> <row> Mail : <input type="email" name="Mail" /> </row>
+                                       <BR> <row><input type="submit" name="btn-ajouterUser" value="Ajouter"></row>
                                     </form>
 
                                 </div>
@@ -147,11 +147,55 @@
                                 <li onclick="dropdown('DelUser');">Supprimer un Utilisateur</li>
                                 <div id="DelUser"> Ici , on supprime un utilisateur</div>
 
+                                <!-- Ajouter un admin : OK -->
                                 <li onclick="dropdown('AddAdmin');">  Ajouter un Administrateur</li>
-                                <div id="AddAdmin"> Ici , on ajoute un admin</div>
+                                <div id="AddAdmin" class="text-center">
+                                    <form method="post" action="fonctions/PanelAdmin/AddAdmin.php">
+                                        <row>Utilisateur (Pseudo) :
+                                            <SELECT name="User" size="1">
+                                                <?php
+                                                $reponse = $connexion->prepare("select id,pseudo from UserProfil where id not in (Select iduser from UserisAdmin )");
+                                                $reponse->execute();
+                                                //on affiche chaque personne une a une
+                                                while ($donnees = $reponse->fetch()){
+                                                    echo "<OPTION value =";
+                                                    echo $donnees['id'];
+                                                    echo ">";
+                                                    echo $donnees['pseudo'];
+                                                    echo "</OPTION>";
+                                                }
+                                                $reponse->closeCursor();
+                                                ?>
+                                            </SELECT>
+                                        </row>
+                                        <BR> <row> <input type="submit" name="addAdmin" value="Ajouter"> </row>
+                                    </form>
+                                </div>
 
+                                <!-- Delete un admin  : OK -->
                                 <li onclick="dropdown('DelAdmin');">  Supprimer un Administrateur</li>
-                                <div id="DelAdmin"> Ici , on supprime un admin</div>
+                                <div id="DelAdmin" class="text-center">
+                                    <form method="post" action="fonctions/PanelAdmin/DelAdmin.php">
+                                        <row> Administrateur a enlever :
+                                        <SELECT Name="AdminDel" size="1">
+                                            <?php
+                                            $reponse = $connexion->prepare("select id,pseudo from UserProfil where id  in (Select iduser from UserisAdmin )");
+                                            $reponse->execute();
+                                            //on affiche 1 a 1 les personnes
+                                            while ($donnees = $reponse->fetch()){
+                                                echo "<OPTION value =";
+                                                echo $donnees['id'];
+                                                echo ">";
+                                                echo $donnees['pseudo'];
+                                                echo "</OPTION>";
+                                            }
+                                            $reponse->closeCursor();
+                                            ?>
+                                        </SELECT>
+                                        </row>
+                                        <BR> <row> <input type="submit" name="DelAdmin" value="Supprimer"> </row>
+                                    </form>
+                                </div>
 
                             </ul>
                         </div>
