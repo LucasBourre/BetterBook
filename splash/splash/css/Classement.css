@@ -6,8 +6,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     line-height: 1.42em;
-    color:#ffffff;
     background-color:#1F2739;
+    color:grey;
 }
 
 
@@ -44,6 +44,7 @@ body {
     padding-top: 2%;
     padding-left:2%;
     text-align:center;
+    color:white;
 }
 
 .cell-border tr:nth-child(odd) {

@@ -6,6 +6,7 @@
     include ('fonctions/connectBD.php');
         session_start();
 
+        global $connexion;
     ?>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -150,19 +151,67 @@
                     <div class="col-md-12 text-left gtco-heading">
                         <p> Gestion des Matchs : </p> <br>
                          <ul>
-							 
+							 <!-- AJOUTER UN MATCH A LA BDD-->
                          <li onclick="dropdown('AddMatch');">Ajouter un Match</li>
-							<div id="AddMatch">
+							<div id="AddMatch" class="text-center">
                                 <form action="fonctions/AddMatch.php" method="post">
-                                    <p> Championnat (1 : Ligue 1 / 2 : PL / 3 : Bundes / 4 : Liga / 5 : Serie A ) : <input type="text" name="Championnat" /></p>
-                                    <p>Equipe Domicile : <input type="text" name="Eq1" /></p>
-                                    <p>Equipe Exterieur : <input type="text" name="Eq2" /></p>
-                                    <p>Cote Domicile : <input type="text" name="Cote1" /></p>
-                                    <p>Cote Nul : <input type="text" name="CoteN" /></p>
-                                    <p>Cote Exterieur : <input type="text" name="Cote2" /></p>
-                                    <p>Date Match ( de type YEAR-MO-JR ): <input type="text" name="Date" /></p>
-                                    <p>Heure Debut ( de type hh:mm:ss) : <input type="text" name="HeureDebut" /></p>
-                                    <p><input type="submit" name="btn-ajouterMatch" value="Ajouter"></p>
+                                    <row> Championnat
+                                        <SELECT name="Championnat" size="1">
+                                            <OPTION value="1" selected="selected"> Ligue 1 </OPTION>
+                                            <OPTION value="2"> Premier League </OPTION>
+                                            <OPTION value="3"> Bundesliga </OPTION>
+                                            <OPTION value="4"> Liga bbva </OPTION>
+                                            <OPTION value="5"> Serie A </OPTION>
+                                        </SELECT> </row>
+
+
+                                    <BR><row> Equipe Domicile :
+                                        <SELECT name="Eq1">
+                                        <?php
+                                        $reponse = $connexion->prepare("select id,nom from Equipes");
+                                        $reponse->execute();
+                                        // On affiche chaque entrée une à une
+                                        while ($donnees = $reponse->fetch()){
+                                            echo "<OPTION value =";
+                                            echo $donnees['id'];
+                                            echo ">";
+                                            echo $donnees['nom'];
+                                            echo "</OPTION>";
+                                        }
+                                        $reponse->closeCursor();
+                                        ?>
+                                        </SELECT>
+                                    </row>
+
+                                    <BR><row>Equipe Exterieur :
+                                        <SELECT name="Eq2">
+                                            <?php
+                                            $reponse = $connexion->prepare("select id,nom from Equipes");
+                                            $reponse->execute();
+                                            // On affiche chaque entrée une à une
+                                            while ($donnees = $reponse->fetch()){
+                                                echo "<OPTION value =";
+                                                echo $donnees['id'];
+                                                echo ">";
+                                                echo $donnees['nom'];
+                                                echo "</OPTION>";
+                                            }
+                                            $reponse->closeCursor();
+                                            ?>
+                                        </SELECT>
+                                    </row>
+
+                                    <BR><row>Cote Domicile : <input type="text" name="Cote1" /></row>
+
+                                    <BR><row>Cote Nul : <input type="text" name="CoteN" /></row>
+
+                                    <BR><row>Cote Exterieur : <input type="text" name="Cote2" /></row>
+
+                                    <BR><row>Date Match : <input type="date" name="Date" /></row>
+
+                                    <BR><row>Heure : <input type="time" name="HeureDebut" /></row>
+
+                                    <BR><row><input type="submit" name="btn-ajouterMatch" value="Ajouter"></row>
                                 </form>
                             </div>
 							

@@ -117,7 +117,7 @@
         <div class="gtco-section border-bottom">
             <div class="gtco-container">
                 <div class="row">
-                    <div class="col-md-12 text-left gtco-heading">
+                    <div class="col-xs-12  text-left gtco-heading">
                         <p> Le classement des meilleurs pronostiqueurs sur BetterBook - Découvrez qui est le meilleur
                             parieur durant ces dernieres semaines afin que vous puissiez essayer de suivre leurs
                             conseils.
@@ -126,17 +126,16 @@
                             <br> Plus vos pronostics seront bons, plus vous monterez dans le classement ! </p>
                     </div>
                 </div>
-
-                <div class="row">
-                    <div class="col-md-12 text-center gtco-heading">
+                <div class="row"  style="overflow-x:auto;">
+                    <div class="col-xs-12 text-center gtco-heading">
                             <p>Top Classement</p>
-                            <table id="myTable"  cellspacing="0" width="100%" class="cell-border">
+                            <table id="myTable"  cellspacing="0" width="100%" class="cell-border col-xs-12">
                                 <thead>
                                 <tr>
-                                    <th><h1> Pseudo </h1></th>
-                                    <th><h1>Benefices</h1></th>
-                                    <th><h1>Côte moyenne</h1></th>
-                                    <th><h1>% de reussite</h1></th>
+                                    <th class="col-xs-3"><h1> Pseudo </h1></th>
+                                    <th class="col-xs-3"><h1>Benefices</h1></th>
+                                    <th class="col-xs-3"><h1>Côte moyenne</h1></th>
+                                    <th class="col-xs-2"><h1>% de reussite</h1></th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -146,7 +145,8 @@
 
                                 $reponse = $connexion->prepare(
                                     'select pseudo , BeneficesG, tauxSuccesG,coteMoy
-                                from UserProfil  
+                                from UserProfil
+                                where tauxSuccesG > 0
                                 order by BeneficesG desc'
 
                                 );
@@ -157,7 +157,7 @@
                                         <td class="pseudoClassement"> <?php echo $donnees['pseudo']; ?></td>
                                         <td><?php echo $donnees['BeneficesG']; ?> €</td>
                                         <td><?php echo $donnees['coteMoy']; ?></td>
-                                        <td><?php echo $donnees['tauxSuccesG']; ?> %</td>
+                                        <td><?php echo $donnees['tauxSuccesG']; ?> </td>
                                     </tr>
                                     <?php
                                 }
