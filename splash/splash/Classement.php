@@ -236,7 +236,6 @@
 </div>
 
 <!-- jQuery -->
-<script src="js/JsProfil_Recherche.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- jQuery Easing -->
@@ -258,6 +257,9 @@
 <script src="js/modernizr-2.6.2.min.js"></script>
 <!-- DataTables.js -->
 <script src="js/jquery.dataTables.min.js"></script>
+<!-- Pour chercher un profil -->
+<script src="js/JsProfil_Recherche.js"></script>
+
 
 
 
