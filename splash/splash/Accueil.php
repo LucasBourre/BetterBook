@@ -14,6 +14,7 @@ include ('fonctions/connectBD.php');
 	<meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques" />
 	<meta name="author" content="BetterBook Corp" />
 
+
   	<!-- Facebook and Twitter integration -->
 	<meta property="og:title" content=""/>
 	<meta property="og:image" content=""/>
@@ -24,6 +25,8 @@ include ('fonctions/connectBD.php');
 	<meta name="twitter:image" content="" />
 	<meta name="twitter:url" content="" />
 	<meta name="twitter:card" content="" />
+        <link rel="icon" type="image/png" href="images/favicon.png" />
+        <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /><![endif]-->
 
 	<!-- font Roboto -->
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">

@@ -26,6 +26,8 @@
     <meta name="twitter:image" content="" />
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
+    <link rel="icon" type="image/png" href="images/favicon.png" />
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" /><![endif]-->
 
     <!-- font Roboto -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
@@ -177,7 +179,7 @@
                                 <div id="DelAdmin" class="text-center">
                                     <form method="post" action="fonctions/PanelAdmin/DelAdmin.php">
                                         <row> Administrateur a enlever :
-                                        <SELECT Name="AdminDel" size="1">
+                                        <SELECT Name="idAdmin" size="1">
                                             <?php
                                             $reponse = $connexion->prepare("select id,pseudo from UserProfil where id  in (Select iduser from UserisAdmin )");
                                             $reponse->execute();
