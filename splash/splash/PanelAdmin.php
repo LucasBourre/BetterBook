@@ -4,55 +4,55 @@
     <!-- fonctions php -->
     <?php
     include ('fonctions/connectBD.php');
-        session_start();
+    session_start();
 
-        global $connexion;
+    global $connexion;
     ?>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>BetterBook &mdash; Just Bet It</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Projet PAI pour parier en ligne" />
-        <meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques" />
-        <meta name="author" content="BetterBook Corp" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BetterBook &mdash; Just Bet It</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Projet PAI pour parier en ligne" />
+    <meta name="keywords" content="paris en ligne, classement paris,statistiques,pronostiques" />
+    <meta name="author" content="BetterBook Corp" />
 
-        <!-- Facebook and Twitter integration -->
-        <meta property="og:title" content=""/>
-        <meta property="og:image" content=""/>
-        <meta property="og:url" content=""/>
-        <meta property="og:site_name" content=""/>
-        <meta property="og:description" content=""/>
-        <meta name="twitter:title" content="" />
-        <meta name="twitter:image" content="" />
-        <meta name="twitter:url" content="" />
-        <meta name="twitter:card" content="" />
+    <!-- Facebook and Twitter integration -->
+    <meta property="og:title" content=""/>
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content=""/>
+    <meta property="og:site_name" content=""/>
+    <meta property="og:description" content=""/>
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:image" content="" />
+    <meta name="twitter:url" content="" />
+    <meta name="twitter:card" content="" />
 
-        <!-- font Roboto -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <!-- font Roboto -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
 
-        <!-- Animate.css -->
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- Icomoon Icon Fonts-->
-        <link rel="stylesheet" href="css/icomoon.css">
-        <!-- Themify Icons-->
-        <link rel="stylesheet" href="css/themify-icons.css">
-        <!-- Bootstrap  -->
-        <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Themify Icons-->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
 
-        <!-- Magnific Popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
 
-        <!-- Owl Carousel  -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
 
-        <!-- Theme style  -->
-        <link rel="stylesheet" href="css/style.css">
-        
-        
-        <!-- STYLE CSS ADMIN PANEL -->
-        <link rel="stylesheet" href="css/AdminPanel.css">
-    
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- STYLE CSS ADMIN PANEL -->
+    <link rel="stylesheet" href="css/AdminPanel.css">
+
 </head>
 <body>
 
@@ -68,11 +68,11 @@
                         <div id="gtco-logo"><a href="Accueil.php">BetterBook <em>.</em></a></div>
                     </div>
                     <div class="col-xs-10 text-right menu-1">
-                        <ul> 
+                        <ul>
                             <?php
                             if ($_SESSION['connexion'] == 1)
                             { ?>
-                            <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg"  width=50px /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
+                                <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg"  width=50px /><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
                             <?php } ?>
                             <li><a href="Pronostiques.php">Pronostiques</a></li>
                             <li><a href="Classement.php">Classement</a></li>
@@ -80,15 +80,15 @@
                             <li><a href="Contact.php">Contact</a></li>
                             <li class="btn-cta"><a href="fonctions/Deconnexion.php"><span>
                                 <?php
-                                    if ($_SESSION['connexion'] == 1){
-                                        echo "Déconnexion";
-                                    } else {
-                                        echo "Connexion";
-                                    }
+                                if ($_SESSION['connexion'] == 1){
+                                    echo "Déconnexion";
+                                } else {
+                                    echo "Connexion";
+                                }
                                 ?>
                                 </span></a></li>
                         </ul>
-                        
+
                     </div>
                 </div>
 
@@ -120,41 +120,52 @@
 
         <div class="gtco-section border-bottom">
             <div class="gtco-container">
-				
+
                 <div class="row">
                     <div class="col-md-12 text-left gtco-heading">
                         <p> Gestion des Utilisateurs : </p> <br>
                         <div id="dropdown">
-                        <ul>
-							
-                        <li onclick="dropdown('AddUser');">Ajouter un Utilisateur</li>
-							<div id="AddUser"> Ici on ajoute un utilisateur</div>
-							
-                        <li onclick="dropdown('ModUser');">Modifier informations d'un Utilisateur</li>
-							<div id="ModUser"> Ici , on modifie un utilisateur</div>
-							
-                        <li onclick="dropdown('DelUser');">Supprimer un Utilisateur</li>
-							<div id="DelUser"> Ici , on supprime un utilisateur</div>
-							
-                        <li onclick="dropdown('AddAdmin');">  Ajouter un Administrateur</li>
-							<div id="AddAdmin"> Ici , on ajoute un admin</div>
-							
-                        <li onclick="dropdown('DelAdmin');">  Supprimer un Administrateur</li>
-							<div id="DelAdmin"> Ici , on supprime un admin</div>
-							
-                        </ul>
+                            <ul>
+                                <!-- AJOUTER UN UTILISATEUR A LA BDD : OK -->
+                                <li onclick="dropdown('AddUser');">Ajouter un Utilisateur</li>
+                                <div id="AddUser" class="text-center">
+                                    <form action="fonctions/PanelAdmin/AddUser.php" method="post">
+                                        <row> Nom : <input type="text" name="Nom" /> </row>
+                                        <row> Prenom : <input type="text" name="Prenom" /> </row>
+                                        <row> Pseudo : <input type="text" name="Pseudo" /> </row>
+                                        <row> Mot de passe : <input type="password" name="MotDePasse" /> </row>
+                                        <row> Date Naissance : <input type="date" name="DateNais" /> </row>
+                                        <row> Mail : <input type="email" name="Mail" /> </row>
+                                        <BR><row><input type="submit" name="btn-ajouterUser" value="Ajouter"></row>
+                                    </form>
+
+                                </div>
+
+                                <li onclick="dropdown('ModUser');">Modifier informations d'un Utilisateur</li>
+                                <div id="ModUser" class="text-center"> Ici , on modifie un utilisateur</div>
+
+                                <li onclick="dropdown('DelUser');">Supprimer un Utilisateur</li>
+                                <div id="DelUser"> Ici , on supprime un utilisateur</div>
+
+                                <li onclick="dropdown('AddAdmin');">  Ajouter un Administrateur</li>
+                                <div id="AddAdmin"> Ici , on ajoute un admin</div>
+
+                                <li onclick="dropdown('DelAdmin');">  Supprimer un Administrateur</li>
+                                <div id="DelAdmin"> Ici , on supprime un admin</div>
+
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12 text-left gtco-heading">
                         <p> Gestion des Matchs : </p> <br>
-                         <ul>
-							 <!-- AJOUTER UN MATCH A LA BDD-->
-                         <li onclick="dropdown('AddMatch');">Ajouter un Match</li>
-							<div id="AddMatch" class="text-center">
-                                <form action="fonctions/AddMatch.php" method="post">
+                        <ul>
+                            <!-- AJOUTER UN MATCH A LA BDD : OK-->
+                            <li onclick="dropdown('AddMatch');">Ajouter un Match</li>
+                            <div id="AddMatch" class="text-center">
+                                <form action="fonctions/PanelAdmin/AddMatch.php" method="post">
                                     <row> Championnat
                                         <SELECT name="Championnat" size="1">
                                             <OPTION value="1" selected="selected"> Ligue 1 </OPTION>
@@ -167,19 +178,19 @@
 
                                     <BR><row> Equipe Domicile :
                                         <SELECT name="Eq1">
-                                        <?php
-                                        $reponse = $connexion->prepare("select id,nom from Equipes");
-                                        $reponse->execute();
-                                        // On affiche chaque entrée une à une
-                                        while ($donnees = $reponse->fetch()){
-                                            echo "<OPTION value =";
-                                            echo $donnees['id'];
-                                            echo ">";
-                                            echo $donnees['nom'];
-                                            echo "</OPTION>";
-                                        }
-                                        $reponse->closeCursor();
-                                        ?>
+                                            <?php
+                                            $reponse = $connexion->prepare("select id,nom from Equipes");
+                                            $reponse->execute();
+                                            // On affiche chaque entrée une à une
+                                            while ($donnees = $reponse->fetch()){
+                                                echo "<OPTION value =";
+                                                echo $donnees['id'];
+                                                echo ">";
+                                                echo $donnees['nom'];
+                                                echo "</OPTION>";
+                                            }
+                                            $reponse->closeCursor();
+                                            ?>
                                         </SELECT>
                                     </row>
 
@@ -214,33 +225,33 @@
                                     <BR><row><input type="submit" name="btn-ajouterMatch" value="Ajouter"></row>
                                 </form>
                             </div>
-							
-                         <li onclick="dropdown('ModMatch');">Mettre le score d'un match</li>
-							<div id="ModMatch"> Ici on met a jour un match </div>
-							
-                         <li onclick="dropdown('DelMatch');">Supprimer un match ( match annulé ? )</li>
-							<div id="DelMatch"> Ici on supprime un match</div>
-							
-							
-                         </ul>
+
+                            <li onclick="dropdown('ModMatch');">Mettre le score d'un match</li>
+                            <div id="ModMatch"> Ici on met a jour un match </div>
+
+                            <li onclick="dropdown('DelMatch');">Supprimer un match ( match annulé ? )</li>
+                            <div id="DelMatch"> Ici on supprime un match</div>
+
+
+                        </ul>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="col-md-12 text-left gtco-heading">
                         <p> Gestion des Paris : </p> <br>
-                         <ul>
-							 
-                        <li onclick="dropdown('ShowParis');">Voir les paris de ... : </li>
-                        <div id="ShowParis"> Ici on montre les paris de machin</div>
-                        
-                        <li onclick="dropdown('AddParis');">Ajouter un pari pour l'utilisateur ... : </li>
-                        <div id="AddParis"> Ici ajoute un paris pour le compte de machin</div>
-                        
-                         </ul>
+                        <ul>
+
+                            <li onclick="dropdown('ShowParis');">Voir les paris de ... : </li>
+                            <div id="ShowParis"> Ici on montre les paris de machin</div>
+
+                            <li onclick="dropdown('AddParis');">Ajouter un pari pour l'utilisateur ... : </li>
+                            <div id="AddParis"> Ici ajoute un paris pour le compte de machin</div>
+
+                        </ul>
                     </div>
                 </div>
-                
+
             </div>
         </div>
 
@@ -319,9 +330,9 @@
 <script src="js/magnific-popup-options.js"></script>
 <!-- Main -->
 <script src="js/main.js"></script>
- <!-- Modernizr JS -->
+<!-- Modernizr JS -->
 <script src="js/modernizr-2.6.2.min.js"></script>
- <!-- Script JS adminPanel-->
+<!-- Script JS adminPanel-->
 <script src="js/AdminPanel.js"></script>
 </body>
 </html>

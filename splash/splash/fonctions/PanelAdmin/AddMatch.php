@@ -1,6 +1,6 @@
 <meta charset="utf-8"/>
 <?php
-require ('connectBD.php');
+require('connectBD.php');
 
 //Fonction qui affiche en console la $data
 function debug_to_console( $data ) {
