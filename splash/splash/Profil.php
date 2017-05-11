@@ -8,7 +8,8 @@
  */
 include ('fonctions/connectBD.php');
     session_start();
-
+require ('fonctions/connectBD.php');
+require ('fonctions/userGet.php');
 ?>
 <html>
 <head>
@@ -54,7 +55,7 @@ include ('fonctions/connectBD.php');
     <link rel="stylesheet" href="css/style.css">
     <!-- Theme icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-            <link rel="stylesheet" href="css/Classement.css" type="text/css">
+            <link rel="stylesheet" href="css/Profil.css" type="text/css">
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
@@ -121,213 +122,275 @@ include ('fonctions/connectBD.php');
             </div>
         </header>
 
+            <div class="gtco-section border-bottom">
+                <div class="gtco-container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="gtco-container">
 
-        <div class="gtco-section border-bottom">
-            <div class="gtco-container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="gtco-container">
+                                <form action="#">
+                                    <div class="row">
+                                        <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+                                           <h1>
+                                            <?php
+                                                require ('fonctions/connectBD.php');
+                                                global $connexion;
+                                                
+                                                $ps=$_SESSION['pseudo'];
+                                                // On récupère juste le nom et prenom de la personne connectée
+                                                $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
+                                                $reponse->execute();                                     
 
-                            <form action="#">
-                                <div class="row">
-                                    <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-                                       <h1>
-                                        <?php
-                                            require ('fonctions/connectBD.php');
+                                                while ($donnees = $reponse->fetch())
+                                                {
+                                                    ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?>  </STRONG> <?php
+                                                }   
+                                              
+                                                $reponse->closeCursor(); // Termine le traitement de la requête
+
+                                            ?>  
+                                           </h1>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <!-- modif profil-->
+                                <script type="text/javascript">
+
+                                function toggle(anId)
+                                {   
+                                    node = document.getElementById(anId);
+                                    
+                                        // Contenu caché, le montrer
+                                        node.style.visibility = "visible";
+                                        node.style.height = "auto";
+                                                                        
+                                }
+                                </script>
+                                <div class="col-md-4 col-md-push-4 animate-box" data-animate-effect="fadeInRight">
+                                    <div class="form-wrap2">
+                                        <div class="tab">
+                                            <ul class="tab-menu">
+                                                <a href="#modif" onclick="toggle('foo')" data-tab="qqch">Modification du profil</a>;
+                                            </ul>
+                                            <div id="foo" class="tab-content2">
+
+                                                <div class="tab-content2-inner" data-content="modif">
+                                                    <form method="post" action="fonctions/gestion_inscription.php">
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="username">Pseudo</label>
+                                                                <input type="text" class="form-control" name="username">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="password">Mot de Passe</label>
+                                                                <input type="password" class="form-control" name="password">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="password2">Confirmez Mot de Passe</label>
+                                                                <input type="password" class="form-control" name="password2">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="lastname">Nom</label>
+                                                                <input type="text" class="form-control" name="lastname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <label for="firstname">Prénom</label>
+                                                                <input type="text" class="form-control" name="firstname">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row form-group">
+                                                            <div class="col-md-12">
+                                                                <input type="submit" class="btn btn-primary" name="BT-inscription" value="Enregistrer">
+                                                            </div>
+                                                        </div>
+                                                    </form>     
+                                                </div>;
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                             <div id="gtco-counter" class="gtco-section">
+                                    <div class="gtco-section animated">
+
+                                        <div class="row">
+                                            <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
+                                                <h2>Quelques statistiques de vos performances</h2>
+                                                
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <?php
+                                            
+                                            // session_start();
                                             global $connexion;
                                             
                                             $ps=$_SESSION['pseudo'];
-                                            // On récupère juste le nom et prenom de la personne connectée
-                                            $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
-                                            $reponse->execute();                                     
+                                            // On récupère tout le contenu de la table matchs
+                                            $reponse = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
+                                            $reponse->execute();
+                                            $reponse2 = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
+                                            $reponse2->execute();
+                                                // On affiche chaque entrée une à une
+                                         
 
                                             while ($donnees = $reponse->fetch())
                                             {
-                                                ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?>  </STRONG> <?php
+                                                if ($donnees['nbCombine'] == 0)
+                                                    {
+                                                        echo "Faites des paris pour acceder à vos statistiques!";
+
+                                                    } else{?>
+
+                                                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-futbol-o"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['nbCombine']?> data-speed="5000" data-refresh-interval="5">1</span>
+                                                                <span class="counter-label">Paris enregistrés</span>
+
+                                                            </div>
+                                                        </div>
+                                                         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-money"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['miseMoy']?> data-speed="100" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Moyenne des mises</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-line-chart"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['coteMoy']?> data-speed="100" data-refresh-interval="500">1</span>
+                                                                <span class="counter-label">Côte moyenne</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-percent"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['tauxSuccesG']?> data-speed="5000" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Taux de réussite</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-trophy"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementTaux($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Votre classement BetterBook (% réussite)</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-euro"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['BeneficesG']?> data-speed="5000" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Montant des gains</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-trophy"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Votre classement BetterBook (bénéfices)</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowers($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Abonnés</span>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                            <div class="feature-center">
+                                                                <span class="icon">
+                                                                    <i class="fa fa-address-book" aria-hidden="true"></i>
+                                                                </span>
+                                                                <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowed($ps);?> data-speed="100" data-refresh-interval="50">1</span>
+                                                                <span class="counter-label">Abonnement</span>
+
+                                                            </div>
+                                                        </div>
+                                                       
+                                                        <?php
+                                                    }
                                             }   
                                           
                                             $reponse->closeCursor(); // Termine le traitement de la requête
 
-                                        ?>  
-                                       </h1>
-                                    </div>
-                                </div>
+                                            ?>  
+                                            <p>___________________________________________________________________________</p>
 
-                            </form>
-
-
-                         <div id="gtco-counter" class="gtco-section">
-                                <div class="gtco-section animated">
-
-                                    <div class="row">
-                                        <div class="col-md-8 col-md-offset-2 text-center gtco-heading animate-box">
-                                            <h2>Quelques statistiques de vos performances</h2>
-                                            
                                         </div>
-                                    </div>
+                                        <div class="row">
+                                                <div class="col-md-6 col-sm-6">
+                                                    <table class="container" id="myTable">
+                                                        <thead>
+                                                        <tr> 
+                                                            <th onclick="sortTablePseudo()"><h1> Abonnés <h1></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                                 getFollowers($ps);
+                                                            ?>    
+                                                        </tbody>
+                                                    </table>
+                                                </div>                                     
+                                                <div class="col-md-6 col-sm-6">
+                                                    <table class="container" id="myTable">
+                                                        <thead>
+                                                        <tr> 
+                                                            <th onclick="sortTablePseudo()"><h1> Abonnement <h1></th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php
+                                                                getFollowed($ps);
+                                                            ?>    
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                        </div>
 
-                                    <div class="row">
-                                        <?php
-                                        require ('fonctions/connectBD.php');
-                                        require ('fonctions/userGet.php');
-                                        // session_start();
-                                        global $connexion;
-                                        
-                                        $ps=$_SESSION['pseudo'];
-                                        // On récupère tout le contenu de la table matchs
-                                        $reponse = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
-                                        $reponse->execute();
-                                        $reponse2 = $connexion->prepare('select tauxSuccesG, BeneficesG, coteMoy, miseMoy, nbCombine  from UserProfil where pseudo="' . $ps.'"' );
-                                        $reponse2->execute();
-                                            // On affiche chaque entrée une à une
-                                     
-
-                                        while ($donnees = $reponse->fetch())
-                                        {
-                                            if ($donnees['nbCombine'] == 0)
-                                                {
-                                                    echo "Faites des paris pour acceder à vos statistiques!";
-
-                                                } else{?>
-
-                                                    <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-futbol-o"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['nbCombine']?> data-speed="5000" data-refresh-interval="5">1</span>
-                                                            <span class="counter-label">Paris enregistrés</span>
-
-                                                        </div>
-                                                    </div>
-                                                     <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-money"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['miseMoy']?> data-speed="100" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Moyenne des mises</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-line-chart"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['coteMoy']?> data-speed="100" data-refresh-interval="500">1</span>
-                                                            <span class="counter-label">Côte moyenne</span>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-percent"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['tauxSuccesG']?> data-speed="5000" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Taux de réussite</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-trophy"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementTaux($ps);?> data-speed="100" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Votre classement BetterBook (% réussite)</span>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-euro"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo $donnees['BeneficesG']?> data-speed="5000" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Montant des gains</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-trophy"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Votre classement BetterBook (bénéfices)</span>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-address-book-o" aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowers($ps);?> data-speed="100" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Abonnés</span>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-                                                        <div class="feature-center">
-                                                            <span class="icon">
-                                                                <i class="fa fa-address-book" aria-hidden="true"></i>
-                                                            </span>
-                                                            <span class="counter js-counter" data-from="0" data-to=<?php echo getCountFollowed($ps);?> data-speed="100" data-refresh-interval="50">1</span>
-                                                            <span class="counter-label">Abonnement</span>
-
-                                                        </div>
-                                                    </div>
-                                                   
-                                                    <?php
-                                                }
-                                        }   
-                                      
-                                        $reponse->closeCursor(); // Termine le traitement de la requête
-
-                                        ?>  
-                                        <p>___________________________________________________________________________</p>
 
                                     </div>
-                                    <div class="row">
-                                            <div class="col-md-6 col-sm-6">
-                                                <table class="container" id="myTable">
-                                                    <thead>
-                                                    <tr> 
-                                                        <th onclick="sortTablePseudo()"><h1> Abonnés <h1></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                             getFollowers($ps);
-                                                        ?>    
-                                                    </tbody>
-                                                </table>
-                                            </div>                                     
-                                            <div class="col-md-6 col-sm-6">
-                                                <table class="container" id="myTable">
-                                                    <thead>
-                                                    <tr> 
-                                                        <th onclick="sortTablePseudo()"><h1> Abonnement <h1></th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <?php
-                                                            getFollowed($ps);
-                                                        ?>    
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                    </div>
-
-
                                 </div>
-                            </div>
 
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
 		<footer id="gtco-footer" role="contentinfo">
 			<div class="gtco-container">
