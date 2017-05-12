@@ -178,7 +178,7 @@ require ('fonctions/userGet.php');
                                                     <?php
 
                                                     if ($_SESSION['erreur_modif'])
-                                                        echo "<font color='red'>".$_SESSION['msg_erreur']."</font>";
+                                                        echo "<script>alert('".$_SESSION['msg_erreur']."')</script>";
                                                     ?>
                                                     <div class="tab-content-inner" data-content="modif">
                                                         <form method="post" action="fonctions/modification.php">
