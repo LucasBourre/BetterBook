@@ -3,7 +3,19 @@
 	require ('connectBD.php');
 	
 
+	function getID($ps){
+		global $connexion;
+		$res = "null";
+		$requete = $connexion->prepare('SELECT * FROM UserProfil WHERE pseudo = "'.$ps.'"');
+				$requete->execute();
 	
+		while($ligne = $requete->fetch()){
+			$res = $ligne['ID'];
+		}
+		return $res;
+		$requete->closeCursor();
+		
+	} 
 	function getNom($ps){
 		global $connexion;
 		$res = "null";
