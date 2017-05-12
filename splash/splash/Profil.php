@@ -169,44 +169,44 @@ require ('fonctions/userGet.php');
                                                                         
                                 }
                                 </script>
-                                <div class="col-md-4 col-md-push-4 animate-box" data-animate-effect="fadeInRight">
-                                    <div class="form-wrap2">
+                                <div id="modif" class="col-md-4 col-md-push-4 animate-box" data-animate-effect="fadeInRight">
+                                    <div class="form-wrap">
                                         <div class="tab">
                                             <ul class="tab-menu">
-                                                <a href="#modif" onclick="toggle('foo')" data-tab="qqch">Modification du profil</a>;
+                                                <li class="active gtco-first"><a href="#modif" onclick="toggle('foo')"  data-tab="modif">Modification du profil</a></li>
                                             </ul>
-                                            <div id="foo" class="tab-content2">
+                                            <div id="foo" class="tab-content">
 
-                                                <div class="tab-content2-inner" data-content="modif">
-                                                    <form method="post" action="fonctions/gestion_inscription.php">
+                                                <div class="tab-content-inner" data-content="modif">
+                                                    <form method="post" action="fonctions/modification.php">
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
                                                                 <label for="username">Pseudo</label>
-                                                                <input type="text" class="form-control" name="username">
+                                                                <input type="text" class="form-control" name="username" value="<?php echo $ps ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
                                                                 <label for="password">Mot de Passe</label>
-                                                                <input type="password" class="form-control" name="password">
+                                                                <input type="password" class="form-control" name="password" value="<?php echo getPassword($ps) ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
                                                                 <label for="password2">Confirmez Mot de Passe</label>
-                                                                <input type="password" class="form-control" name="password2">
+                                                                <input type="password" class="form-control" name="password2" value="<?php echo getPassword($ps) ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
                                                                 <label for="lastname">Nom</label>
-                                                                <input type="text" class="form-control" name="lastname">
+                                                                <input type="text" class="form-control" name="lastname" value="<?php echo getNom($ps) ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
                                                             <div class="col-md-12">
                                                                 <label for="firstname">Prénom</label>
-                                                                <input type="text" class="form-control" name="firstname">
+                                                                <input type="text" class="form-control" name="firstname" value="<?php echo getPrenom($ps) ?>">
                                                             </div>
                                                         </div>
                                                         <div class="row form-group">
@@ -215,7 +215,7 @@ require ('fonctions/userGet.php');
                                                             </div>
                                                         </div>
                                                     </form>     
-                                                </div>;
+                                                </div>
 
                                             </div>
                                         </div>
