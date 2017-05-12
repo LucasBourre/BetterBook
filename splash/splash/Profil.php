@@ -157,67 +157,72 @@ require ('fonctions/userGet.php');
 
                                 </form>
                                 <!-- modif profil-->
-                                <script type="text/javascript">
-
-                                function toggle(anId)
-                                {   
-                                    node = document.getElementById(anId);
-                                    
-                                        // Contenu caché, le montrer
-                                        node.style.visibility = "visible";
-                                        node.style.height = "auto";
-                                                                        
-                                }
+                                <script language="JavaScript">
+                                    function show_hide_div(nomdiv){
+                                    var lediv = document.getElementById(nomdiv);
+                                    if(lediv.style.display=="block")
+                                    lediv.style.display="none";
+                                    else
+                                    lediv.style.display="block";
+                                    }
                                 </script>
                                 <div id="modif" class="col-md-4 col-md-push-4 animate-box" data-animate-effect="fadeInRight">
                                     <div class="form-wrap">
                                         <div class="tab">
-                                            <ul class="tab-menu">
-                                                <li class="active gtco-first"><a href="#modif" onclick="toggle('foo')"  data-tab="modif">Modification du profil</a></li>
-                                            </ul>
-                                            <div id="foo" class="tab-content">
+                                            <div class="tab-menu">
+                                               <input type="button" class="btn btn-primary" onclick="show_hide_div('mod')" data-tab="modif" value="Modification des informations">
+                                            </div>
+                                            <div id="mod">
+                                          
+                                                <div class="tab-content">
+                                                    <?php
 
-                                                <div class="tab-content-inner" data-content="modif">
-                                                    <form method="post" action="fonctions/modification.php">
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <label for="username">Pseudo</label>
-                                                                <input type="text" class="form-control" name="username" value="<?php echo $ps ?>">
+                                                    if ($_SESSION['erreur_modif'])
+                                                        echo "<font color='red'>".$_SESSION['msg_erreur']."</font>";
+                                                    ?>
+                                                    <div class="tab-content-inner" data-content="modif">
+                                                        <form method="post" action="fonctions/modification.php">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="username">Pseudo</label>
+                                                                    <input type="text" class="form-control" name="username" value="<?php echo $ps ?>">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <label for="password">Mot de Passe</label>
-                                                                <input type="password" class="form-control" name="password" value="<?php echo getPassword($ps) ?>">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="password">Mot de Passe</label>
+                                                                    <input type="password" class="form-control" name="password" value="<?php echo getPassword($ps) ?>">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <label for="password2">Confirmez Mot de Passe</label>
-                                                                <input type="password" class="form-control" name="password2" value="<?php echo getPassword($ps) ?>">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="password2">Confirmez Mot de Passe</label>
+                                                                    <input type="password" class="form-control" name="password2" value="<?php echo getPassword($ps) ?>">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <label for="lastname">Nom</label>
-                                                                <input type="text" class="form-control" name="lastname" value="<?php echo getNom($ps) ?>">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="lastname">Nom</label>
+                                                                    <input type="text" class="form-control" name="lastname" value="<?php echo getNom($ps) ?>">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <label for="firstname">Prénom</label>
-                                                                <input type="text" class="form-control" name="firstname" value="<?php echo getPrenom($ps) ?>">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <label for="firstname">Prénom</label>
+                                                                    <input type="text" class="form-control" name="firstname" value="<?php echo getPrenom($ps) ?>">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="row form-group">
-                                                            <div class="col-md-12">
-                                                                <input type="submit" class="btn btn-primary" name="BT-inscription" value="Enregistrer">
+                                                            <div class="row form-group">
+                                                                <div class="col-md-12">
+                                                                    <input type="submit" class="btn btn-primary" name="BT-inscription" value="Enregistrer">
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </form>     
+                                                        </form>     
+                                                    </div>
                                                 </div>
 
-                                            </div>
+                                             </div> 
+
                                         </div>
                                     </div>
                                 </div>
