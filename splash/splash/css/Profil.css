@@ -74,74 +74,21 @@
    box-shadow: #ffffff -1px 1px, #ffffff -2px 2px, #ffffff -3px 3px, #ffffff -4px 4px, #ffffff -5px 5px, #ffffff -6px 6px;
    
  }
- 
- @media (max-width: 800px) {
- .container td:nth-child(4),
- .container th:nth-child(4) { display: none; }
- }
- 
-.form-wrap2 {
-  position: relative;
-  width: 100%;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
-  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
-}
-.form-wrap2 .tab-menu {
-  padding: 0 !important;
-  margin: 0 0 -10px 0 !important;
-  width: 100%;
-  float: left;
-  z-index: 12;
-  position: relative;
-}
-.form-wrap2 .tab-menu li {
-  padding: 0;
-  margin: 0;
-  list-style: none;
-  display: inline;
-  float: left;
-  width: 50%;
-  text-align: center;
-}
-.form-wrap2 .tab-menu li a {
-  padding: 10px 20px 20px 20px;
-  float: left;
-  width: 100%;
-  display: block;
-  background: rgba(255, 255, 255, 0.5);
-  color: #1a1a1a;
-}
-.form-wrap2 .tab-menu li a:hover {
-  color: #1a1a1a;
-}
-.form-wrap2 .tab-menu li.active a {
-  display: block;
-  padding: 10px 20px 20px 20px;
-  background: #fff;
-  color: #f54c53;
-}
-.form-wrap2 .tab-menu li.gtco-first a {
-  border-top-left-radius: 7px;
-}
-.form-wrap2 .tab-menu li.gtco-second a {
-  border-top-right-radius: 7px;
- .form-wrap .tab-content2 {
+
+
+#modif .form-wrap .tab-content {
   z-index: 10;
   position: relative;
   clear: both;
-  background: grey;
+  background: #fff;
   padding: 30px;
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
 }
-.form-wrap2 .tab-content2 .tab-content2-inner {
-  display: none;
-}
-.form-wrap2 .tab-content2 .tab-content2-inner.active {
-  display: block;
+#modif .form-wrap .tab-content .tab-content-inner {
+  color: #403E10;
 }
 
-#foo{
-    visibility: hidden;
+#mod{
+     display: none;
 }
