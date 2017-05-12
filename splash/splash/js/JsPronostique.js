@@ -30,8 +30,8 @@
     					alert("Erreur : vous avez déjà choisi ce match !");
 					}
 					else{
-			 	
-  				
+
+
 
   				$(this).toggleClass("active");
 		 		var cote = parseFloat ($( this ).val());

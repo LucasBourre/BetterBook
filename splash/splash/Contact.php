@@ -196,6 +196,11 @@ include ('fonctions/connectBD.php');
 						<div class="gtco-widget">
 							<h3>Liens</h3>
 							<ul class="gtco-footer-links">
+                                <li> Rechercher un Utilisateur :<form id="formulaire_Recherche" action="Profil_Recherche.php">
+                                        <input type="text" id="recherche" name="pseudo" placeholder="Recherche">
+                                        <input type="submit" id="butonRecherche" value=">>">
+                                    </form>
+                                </li>
 								<li><a href="Informations.php">Comment ça marche ?</a></li>
 								<li><a href="Contact.php">Contactez nous.</a></li>
 								<li><a href="#">Plan du site</a></li>

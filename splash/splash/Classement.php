@@ -65,10 +65,7 @@
                         <ul>
                             <?php
                             if ($_SESSION['connexion'] == 1) { ?>
-                                <li class="btn-cta"><a href="Profil.php"><span><img id="Utilisateur"
-                                                                                    src="images/utilisateur.jpg"
-                                                                                    width=50px><?php echo " " . $_SESSION['pseudo']; ?></span></a>
-                                </li>
+                                <li class="btn-cta"> <a href="Profil.php"><span><img id="Utilisateur" src="images/utilisateur.jpg" width=50px/><?php echo  " ".$_SESSION['pseudo']; ?></span></a></li>
                             <?php } ?>
                             <li><a href="Pronostiques.php">Pronostiques</a></li>
                             <li><a href="Classement.php">Classement</a></li>
@@ -124,6 +121,8 @@
                             <br>Êtes-vous un bon pronostiqueur sportif ? BetterBook vous donne une chance de mettre en
                             oeuvre vos talents gratuitement.
                             <br> Plus vos pronostics seront bons, plus vous monterez dans le classement ! </p>
+                            <br>
+                            <br> Cliquez sur un pseudo pour afficher son Profil.
                     </div>
                 </div>
                 <div class="row"  style="overflow-x:auto;">
@@ -203,6 +202,11 @@
                         <div class="gtco-widget">
                             <h3>Contact</h3>
                             <ul class="gtco-quick-contact">
+                                <li> Rechercher un Utilisateur :<form id="formulaire_Recherche" action="Profil_Recherche.php">
+                                        <input type="text" id="recherche" name="pseudo" placeholder="Recherche">
+                                        <input type="submit" id="butonRecherche" value=">>">
+                                    </form>
+                                </li>
                                 <li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a>
                                 </li>
                                 <li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i>

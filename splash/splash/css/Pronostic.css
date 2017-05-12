@@ -147,20 +147,14 @@
 }
 
 #recherche {
-    background-color: #177084;
-    color: #ffffff;
-    width: 148px;
-    height: 36px;
+    background-color: midnightblue;
+    color: white;
+    width: 100px;
+    height: 30px;
     border-radius: 10px;
 }
 
 #butonRecherche{
-        margin-left: -37px;
-        border-radius: 33px;
+    border-radius: 33px;
 }
 
-
-#formulaire_Recherche{
-    margin-top: -38px;
-    margin-right: -22px;
-}
