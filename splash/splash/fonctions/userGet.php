@@ -16,6 +16,20 @@
 		$requete->closeCursor();
 		
 	} 
+	
+	function getPassword($ps){
+		global $connexion;
+		$res = "null";
+		$requete = $connexion->prepare('SELECT * FROM UserProfil WHERE pseudo = "'.$ps.'"');
+				$requete->execute();
+	
+		while($ligne = $requete->fetch()){
+			$res = $ligne['mdp'];
+		}
+		return $res;
+		$requete->closeCursor();
+	}
+	
 	function getNom($ps){
 		global $connexion;
 		$res = "null";
