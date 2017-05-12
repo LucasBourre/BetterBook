@@ -1,12 +1,8 @@
 <?php
 
-//require ('fonctions/connectBD.php');
 	require ('connectBD.php');
 	
-	
-	function yep(){
-		return "yep";
-	}
+
 	
 	function getNom($ps){
 		global $connexion;
