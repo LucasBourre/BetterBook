@@ -14,7 +14,7 @@
 		if (testPseudoCorrect($pseudo, $pseudoActuel)){
 			if ($_POST['password'] <> $_POST['password2']) {
 					echo 'les mots de passe ne correspondent pas';
-					$_SESSION['erreur_co'] = true;
+					$_SESSION['erreur_modif'] = true;
 					$_SESSION['msg_erreur'] = "les mots de passe saisis ne correspondent pas!";
 					Header('Location: ../Profil.php');
 				} else {
@@ -23,20 +23,20 @@
 					$var = $connexion->prepare('UPDATE UserProfil SET nom = "'.$nom.'", prenom = "'.$prenom.'", pseudo = "'.$pseudo.'", mdp = "'.$mdp.'" WHERE pseudo = "'.$pseudoActuel.'"');
 					$var->execute();
 					$_SESSION['pseudo'] = $pseudo;
-					$_SESSION['erreur_co'] = false;
+					$_SESSION['erreur_modif'] = false;
 					echo "bon";
 					Header('Location: ../Profil.php');
 				}
 		} else {
 				echo "pseudo deja utilisé <br>";
-				$_SESSION['erreur_co'] = true;
+				$_SESSION['erreur_modif'] = true;
 				$_SESSION['msg_erreur'] = "pseudo déjà utilisé!";
 				Header('Location: ../Profil.php');
 				
 		}
 	} else {
 			echo "tous les champs n'ont pas été remplis";
-			$_SESSION['erreur_co'] = true;
+			$_SESSION['erreur_modif'] = true;
 			$_SESSION['msg_erreur'] = "veuillez remplir tous les champs!";
 			Header('Location: ../Profil.php');
 	 }
