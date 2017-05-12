@@ -41,6 +41,7 @@
 					
 					$_SESSION['pseudo'] = $pseudo;
 					$_SESSION['connexion'] = 1;
+					Header('Location: ../Accueil.php');
 				}
 			} else {
 				echo "pseudo deja utilisé <br>";

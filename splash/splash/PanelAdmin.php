@@ -292,7 +292,34 @@
                             </div>
 
                             <li onclick="dropdown('ModMatch');">Mettre le score d'un match</li>
-                            <div id="ModMatch"> Ici on met a jour un match </div>
+                            <div id="ModMatch" class="text-center">
+                                <form method="post" action="fonctions/PanelAdmin/ModMatch.php">
+                                    <row>Match :
+                                        <SELECT name="MatchID" size="1">
+                                            <?php
+                                            $sql= "SELECT m.ID as id, E1.nom as Eq1, E2.nom as Eq2 FROM Matchs m JOIN Equipes E1 ON m.equipe1 = E1.id
+                                            JOIN Equipes E2 ON m.equipe2 = E2.id
+                                            Where m.resultat IS NULL";
+                                            $reponse = $connexion->prepare($sql);
+                                            $reponse->execute();
+                                            //on affiche chaque personne une a une
+                                            while ($donnees = $reponse->fetch()){
+                                                echo "<OPTION value =";
+                                                echo $donnees['id'];
+                                                echo ">";
+                                                echo $donnees['Eq1'];
+                                                echo " - ";
+                                                echo $donnees['Eq2'];
+                                                echo "</OPTION>";
+                                            }
+                                            $reponse->closeCursor();
+                                            ?>
+                                        </SELECT>
+                                    </row>
+                                  <row> Résultat ? (1 , N , 2) : <input type="text" name="resultat" /> </row>
+                                    <BR> <row> <input type="submit" name="btn-modMatch" value="Modifier"> </row>
+                                </form>
+                            </div>
 
                             <li onclick="dropdown('DelMatch');">Supprimer un match ( match annulé ? )</li>
                             <div id="DelMatch"> Ici on supprime un match</div>
