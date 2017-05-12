@@ -106,8 +106,7 @@ include ('fonctions/connectBD.php');
 		<div class="gtco-container">
 			<div class="row">
 				<div class="col-md-12 col-md-offset-0 text-left">
-					<div class="row row-mt-15em">
-
+					<div class="row">
 						<div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
 							<span class="intro-text-small">Comment ça marche ?</span>
 							<h1>Des questions ? N'hésitez pas à nous contacter</h1>
@@ -144,21 +143,28 @@ include ('fonctions/connectBD.php');
 							en haut du classement.</p>
 						</li>
 						<li class="animate-box">
-							<h2>I have technical problem, who do I email?</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+							<h2>Comment puis-je voir le profil d'un Utilisateur ?</h2>
+							<p>Vous pouvez utiliser la fonction " Rechercher " dans le menu du site pour trouver le profil d'un utilisateur.
+                                Vous pouvez également cliquer sur l'un des pseudonymes des utilisateurs dans le classement, afin d'accéder directement à son profil.</p>
 						</li>
 						<li class="animate-box">
-							<h2>Can I have a username that is already taken?</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+							<h2>Comment voir les paris d'un utilisateur?</h2>
+							<p>Afin de voir le pari d'un utilisateur, vous devez vous abonner à celui-ci sur sa page profil.
+                            Les utilisateurs auquels vous vous êtes abonnés apparaîtront dans votre profil.</p>
 						</li>
-						<li class="animate-box">
-							<h2>How do I use Splash features?</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</li>
-						<li class="animate-box">
-							<h2>Is Splash free??</h2>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						</li>
+                        <li class="animate-box">
+                            <h2>Comment réaliser un pari?</h2>
+                            <p>Pour parier, il suffit de vous connecter sur la page d'Accueil.
+                            Rendez vous ensuite sur l'onglet <a href="Pronostiques.php"> Pronostique </a> . Vous pourrez alors choisir le ou les championnats dans
+                            lesquels vous souhaitez faire vos paris.
+                            Indiquez ensuite la mise que vous souhaitez mettre en fin de page.</p>
+                        </li>
+                        <li class="animate-box">
+                            <h2>J'ai trouvé un bug ! Ou puis-je vous en faire part ?</h2>
+                            <p>Vous pouvez nous en faire part sur la page Contactez-Nous, ou encore sur notre page
+                                <a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a>  ou
+                                ou <a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a>  :)</p>
+                        </li>
 					</ul>
 				</div>
 			</div>
