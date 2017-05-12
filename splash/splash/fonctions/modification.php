@@ -6,24 +6,33 @@
 	$nom = $_POST['lastname'];
 	$prenom = $_POST['firstname'];
 	$pseudo = $_POST['username'];
-	$mdp = $POST['password'];
+	$mdp = $_POST['password'];
 	
 	$pseudoActuel = $_SESSION['pseudo'];
 	
 	if (testToutRempli()) {
-		if (testPseudoCorrect($pseudo)){
+		if (testPseudoCorrect($pseudo, $pseudoActuel)){
+			if ($_POST['password'] <> $_POST['password2']) {
+					echo 'les mots de passe ne correspondent pas';
+					$_SESSION['erreur_co'] = true;
+					$_SESSION['msg_erreur'] = "les mots de passe saisis ne correspondent pas!";
+					Header('Location: ../Profil.php');
+				} else {
 			
-			global $connexion;
-			$var = $connexion->prepare('UPDATE UserProfil SET nom = "'.$nom.'", prenom = "'.$prenom.'", pseudo = "'.$pseudo.'", mdp = "'.$mdp.'" WHERE pseudo = "'.$pseudoActuel.'"');
-			$var->execute();
-			$_SESSION['pseudo'] = $pseudo;
-			$_SESSION['erreur_co'] = false;
-			Header('Location: ../Profil.php');
+					global $connexion;
+					$var = $connexion->prepare('UPDATE UserProfil SET nom = "'.$nom.'", prenom = "'.$prenom.'", pseudo = "'.$pseudo.'", mdp = "'.$mdp.'" WHERE pseudo = "'.$pseudoActuel.'"');
+					$var->execute();
+					$_SESSION['pseudo'] = $pseudo;
+					$_SESSION['erreur_co'] = false;
+					echo "bon";
+					Header('Location: ../Profil.php');
+				}
 		} else {
 				echo "pseudo deja utilisé <br>";
 				$_SESSION['erreur_co'] = true;
 				$_SESSION['msg_erreur'] = "pseudo déjà utilisé!";
 				Header('Location: ../Profil.php');
+				
 		}
 	} else {
 			echo "tous les champs n'ont pas été remplis";
@@ -33,21 +42,26 @@
 	 }
 	
 	
-	function testPseudoCorrect($ps){
+	function testPseudoCorrect($ps, $ancien){
 		$res = true;
 		
-		global $connexion;
-		$var = $connexion->prepare("SELECT pseudo FROM UserProfil");
-		$var->execute();
+		$ps1 = strtolower($ps);
+		$ps2 = strtolower($ancien);
 		
-		while ($ligne = $var->fetch()){
-			$data = strtolower($ligne['pseudo']);
-			$pslow = strtolower($ps);
-			if ($data == $pslow) {
-				$res = false;
+		if ($ps1 <> $ps2){
+			
+			global $connexion;
+			$var = $connexion->prepare("SELECT pseudo FROM UserProfil");
+			$var->execute();
+			
+			while ($ligne = $var->fetch()){
+				$data = strtolower($ligne['pseudo']);
+				$pslow = strtolower($ps);
+				if ($data == $pslow) {
+					$res = false;
+				}
 			}
 		}
-		
 		return $res;
 	}
 	
