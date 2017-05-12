@@ -132,22 +132,41 @@
                                 <li onclick="dropdown('AddUser');">Ajouter un Utilisateur</li>
                                 <div id="AddUser" class="text-center">
                                     <form action="fonctions/PanelAdmin/AddUser.php" method="post">
-                                       <BR> <row> Nom : <input type="text" name="Nom" /> </row>
-                                       <BR> <row> Prenom : <input type="text" name="Prenom" /> </row>
-                                       <BR> <row> Pseudo : <input type="text" name="Pseudo" /> </row>
-                                       <BR> <row> Mot de passe : <input type="password" name="MotDePasse" /> </row>
-                                       <BR> <row> Date Naissance : <input type="date" name="DateNais" /> </row>
-                                       <BR> <row> Mail : <input type="email" name="Mail" /> </row>
-                                       <BR> <row><input type="submit" name="btn-ajouterUser" value="Ajouter"></row>
+                                        <BR> <row> Nom : <input type="text" name="Nom" /> </row>
+                                        <BR> <row> Prenom : <input type="text" name="Prenom" /> </row>
+                                        <BR> <row> Pseudo : <input type="text" name="Pseudo" /> </row>
+                                        <BR> <row> Mot de passe : <input type="password" name="MotDePasse" /> </row>
+                                        <BR> <row> Date Naissance : <input type="date" name="DateNais" /> </row>
+                                        <BR> <row> Mail : <input type="email" name="Mail" /> </row>
+                                        <BR> <row><input type="submit" name="btn-ajouterUser" value="Ajouter"></row>
                                     </form>
 
                                 </div>
 
-                                <li onclick="dropdown('ModUser');">Modifier informations d'un Utilisateur</li>
-                                <div id="ModUser" class="text-center"> Ici , on modifie un utilisateur</div>
-
+                                <!-- Supprimer un utilisateur : OK -->
                                 <li onclick="dropdown('DelUser');">Supprimer un Utilisateur</li>
-                                <div id="DelUser"> Ici , on supprime un utilisateur</div>
+                                <div id="DelUser">
+                                    <form method="post" action="fonctions/PanelAdmin/DelUser.php">
+                                        <row>Utilisateur (Pseudo) :
+                                            <SELECT name="UserId" size="1">
+                                                <?php
+                                                $reponse = $connexion->prepare("select id,pseudo from UserProfil");
+                                                $reponse->execute();
+                                                //on affiche chaque personne une a une
+                                                while ($donnees = $reponse->fetch()){
+                                                    echo "<OPTION value =";
+                                                    echo $donnees['id'];
+                                                    echo ">";
+                                                    echo $donnees['pseudo'];
+                                                    echo "</OPTION>";
+                                                }
+                                                $reponse->closeCursor();
+                                                ?>
+                                            </SELECT>
+                                        </row>
+                                        <BR> <row> <input type="submit" name="delUser" value="Supprimer / ! \"> </row>
+                                    </form>
+                                </div>
 
                                 <!-- Ajouter un admin : OK -->
                                 <li onclick="dropdown('AddAdmin');">  Ajouter un Administrateur</li>
@@ -179,21 +198,21 @@
                                 <div id="DelAdmin" class="text-center">
                                     <form method="post" action="fonctions/PanelAdmin/DelAdmin.php">
                                         <row> Administrateur a enlever :
-                                        <SELECT Name="idAdmin" size="1">
-                                            <?php
-                                            $reponse = $connexion->prepare("select id,pseudo from UserProfil where id  in (Select iduser from UserisAdmin )");
-                                            $reponse->execute();
-                                            //on affiche 1 a 1 les personnes
-                                            while ($donnees = $reponse->fetch()){
-                                                echo "<OPTION value =";
-                                                echo $donnees['id'];
-                                                echo ">";
-                                                echo $donnees['pseudo'];
-                                                echo "</OPTION>";
-                                            }
-                                            $reponse->closeCursor();
-                                            ?>
-                                        </SELECT>
+                                            <SELECT Name="idAdmin" size="1">
+                                                <?php
+                                                $reponse = $connexion->prepare("select id,pseudo from UserProfil where id  in (Select iduser from UserisAdmin )");
+                                                $reponse->execute();
+                                                //on affiche 1 a 1 les personnes
+                                                while ($donnees = $reponse->fetch()){
+                                                    echo "<OPTION value =";
+                                                    echo $donnees['id'];
+                                                    echo ">";
+                                                    echo $donnees['pseudo'];
+                                                    echo "</OPTION>";
+                                                }
+                                                $reponse->closeCursor();
+                                                ?>
+                                            </SELECT>
                                         </row>
                                         <BR> <row> <input type="submit" name="DelAdmin" value="Supprimer"> </row>
                                     </form>
@@ -283,20 +302,6 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-12 text-left gtco-heading">
-                        <p> Gestion des Paris : </p> <br>
-                        <ul>
-
-                            <li onclick="dropdown('ShowParis');">Voir les paris de ... : </li>
-                            <div id="ShowParis"> Ici on montre les paris de machin</div>
-
-                            <li onclick="dropdown('AddParis');">Ajouter un pari pour l'utilisateur ... : </li>
-                            <div id="AddParis"> Ici ajoute un paris pour le compte de machin</div>
-
-                        </ul>
-                    </div>
-                </div>
 
             </div>
         </div>
