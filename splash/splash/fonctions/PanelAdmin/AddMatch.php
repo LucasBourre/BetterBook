@@ -1,6 +1,6 @@
 <meta charset="utf-8"/>
 <?php
-require('connectBD.php');
+require('../connectBD.php');
 
 //Fonction qui affiche en console la $data
 function debug_to_console( $data ) {
@@ -22,8 +22,9 @@ if (isset($_POST['btn-ajouterMatch'])) {
     $Cote2 = $_POST['Cote2'];
     //On transforme la date en YYYY MM DD
     $Date = $_POST['Date'];
-    list($jour, $mois, $annee) = explode('/', $Date);
-    $Date=date("Y-m-d", mktime(0, 0, 0, $mois, $jour, $annee));
+    $expl=explode('/',$Date);
+    $rev=array_reverse($expl);
+    $Date=implode('-',$rev);
     //Lheure du match
     $HeureDebut = $_POST['HeureDebut'];
 
@@ -35,7 +36,7 @@ if (isset($_POST['btn-ajouterMatch'])) {
         $var = $connexion->prepare("INSERT INTO Matchs (Date,heureDebut,championnat,equipe1,equipe2,cote1,cote2,coteN) values ('$Date', '$HeureDebut', '$Championnat', '$E1', '$E2' , '$Cote1' 
             , '$Cote2' , '$CoteN')");
         $var->execute();
-        Header('Location: ../PanelAdmin.php');
+        Header('Location: ../../PanelAdmin.php');
     } else {
         echo "erreur de remplissage. ";
     }
