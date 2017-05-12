@@ -27,7 +27,7 @@
   				var elem = $(this).closest("p").attr("value");
 				index = obj.findIndex(x => x.idmatch==elem);
 					if (index > -1) {
-    					alert("erreur vous avez deja choisi ce match");
+    					alert("Erreur : vous avez déjà choisi ce match !");
 					}
 					else{
 			 	
@@ -62,12 +62,12 @@
 			var mise = $('input[name="mise"]').val();
 			
 			if (co.includes("Connexion")) {
-    			alert("Veuillez se connecter pour pouvoir parier");
+    			alert("Veuillez vous connecter pour pouvoir parier !");
 			}else if(cote== "0") {
-				alert("Aucun match sélectionné");
+				alert("Aucun match sélectionné !");
 			}
 			else if (mise == 0){
-				alert ("Veuillez indiquer votre mise");
+				alert ("Veuillez indiquer votre mise !");
 			}
 			else{
 			dataString = obj ; 
@@ -78,7 +78,7 @@
                     data: {cote:cote , mise:mise, pari:jsonString},
                     success: function(data)
                     {
-                    	alert("Merci d'avoir parier")
+                    	alert("Merci d'avoir parié ! :) ")
                        location.reload();
                     }
 			});

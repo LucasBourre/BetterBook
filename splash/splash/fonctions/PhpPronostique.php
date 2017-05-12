@@ -31,7 +31,7 @@
 					    	 	<button class="bouton" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
 					    	 </span>
 					    	 
-					    	 <span class ="equipe" value="N"> match null  
+					    	 <span class ="equipe" value="N"> Match Nul
 								<button class="boutonX" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
 							</span>
 							
