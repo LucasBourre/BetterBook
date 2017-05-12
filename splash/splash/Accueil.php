@@ -286,16 +286,16 @@ global $connexion;
 						<span class="icon">
 							<i class="ti-money"></i>
 						</span>
-                                   <?php
-                                   $req = "select max(cotetotale) ,id from Combine where resFinal = 1";
-                                   $reponse = $connexion->prepare($req);
-                                   $reponse->execute();
-                                   $item = $reponse->fetchColumn();
-                                   $item = round($item);
-                                        echo"<span class=\"counter js-counter\" data-from=\"0\" data-to =\"";
-                                        echo $item;
-                                        echo"\" data-speed=\"5000\" data-refresh-interval=\"50\">1</span>";
-                                   ?>
+                                    <?php
+                                    $req = "select max(cotetotale) ,id from Combine where resFinal = 1";
+                                    $reponse = $connexion->prepare($req);
+                                    $reponse->execute();
+                                    $item = $reponse->fetchColumn();
+                                    $item = round($item);
+                                    echo"<span class=\"counter js-counter\" data-from=\"0\" data-to =\"";
+                                    echo $item;
+                                    echo"\" data-speed=\"5000\" data-refresh-interval=\"50\">1</span>";
+                                    ?>
                                     <span class="counter-label">Cote maximale validée</span>
                                 </div>
                             </div>
@@ -343,6 +343,7 @@ global $connexion;
                                         <li><a href="#">Plan du site</a></li>
                                         <li><a href="#">Informations légales </a></li>
                                         <li><a href="#">C.G.U</a></li>
+                                        <li><a href="PanelAdmin.php"> Panel Administrateur </a></li>
                                     </ul>
                                 </div>
                             </div>

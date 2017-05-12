@@ -4,7 +4,31 @@
     <!-- fonctions php -->
     <?php
     include ('fonctions/connectBD.php');
+    require('fonctions/userGet.php');
     session_start();
+
+    //on initialise isAdmin a 0
+    $isAdmin = 0;
+    //On recupere l'id de l'utilisateur connecte
+    $ps = $_SESSION['pseudo'];
+    $id = getID($ps);
+    //On recupere les User Administrateurs
+    $req = "Select idUser from UserisAdmin";
+    $reponse= $connexion->prepare($req);
+    $reponse->execute();
+    //On parcours tous les administrateurs
+    while ($donnees = $reponse->fetch()) {
+        //SI l'id du connecte == un des admins
+        if ($donnees['idUser'] == $id){
+            //alors isAdmin = 1
+            $isAdmin =1;
+        }
+    }
+    //Si a la fin isAdmin = 0 :
+    if($isAdmin == 0) {
+        echo"Vous n'etes pas Administrateur ! ";
+        Header('Location: Accueil.php');
+    }
 
     global $connexion;
     ?>
@@ -355,6 +379,7 @@
                                 <li><a href="#">Plan du site</a></li>
                                 <li><a href="#">Informations légales </a></li>
                                 <li><a href="#">C.G.U</a></li>
+                                <li><a href="PanelAdmin.php"> Panel Administrateur </a></li>
                             </ul>
                         </div>
                     </div>

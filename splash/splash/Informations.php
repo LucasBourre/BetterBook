@@ -191,6 +191,7 @@ include ('fonctions/connectBD.php');
 								<li><a href="#">Plan du site</a></li>
 								<li><a href="#">Informations légales </a></li>
 								<li><a href="#">C.G.U</a></li>
+                                <li><a href="PanelAdmin.php"> Panel Administrateur </a></li>
 							</ul>
 						</div>
 					</div>
