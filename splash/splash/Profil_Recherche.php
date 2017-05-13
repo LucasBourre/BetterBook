@@ -1,3 +1,4 @@
+
 <!DOCTYPE HTML>
 <?php
 /**
@@ -8,7 +9,6 @@
  */
 include ('fonctions/connectBD.php');
     session_start();
-
 ?>
 <html>
 <head>
@@ -54,11 +54,13 @@ include ('fonctions/connectBD.php');
 
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Follow.css">
     <!-- Theme icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Modernizr JS -->
     <script src="js/modernizr-2.6.2.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 </head>
 <body>
 
@@ -128,16 +130,20 @@ include ('fonctions/connectBD.php');
                     <div class="col-md-12">
                         <div class="gtco-container">
 
+                          
                             <form action="#">
                                 <div class="row form-group">
                                     <div class="col-md-12">
                                         <h1>
                                      <?php
                                         require ('fonctions/connectBD.php');
-                                        // session_start();
+                                        require ('fonctions/userGet.php');
+                                         // session_start();
                                         global $connexion;
                                         
                                         $ps=$_GET['pseudo'];
+                                        $_SESSION['pseudoRecherche'] = $ps;
+                                        $pseudo = $_SESSION['pseudo'];
 
                                         // On récupère tout le contenu de la table matchs
                                         $reponse = $connexion->prepare('select nom, prenom from UserProfil where pseudo="' . $ps.'"' );
@@ -154,8 +160,20 @@ include ('fonctions/connectBD.php');
                                             ?>  <STRONG>  <?php echo $donnees['nom'] .' '. $donnees['prenom'] ;?> </STRONG> <?php
 
                                         }
+                                         $reponse->closeCursor(); // Termine le traitement de la 
                                       
-                                        $reponse->closeCursor(); // Termine le traitement de la requête
+                                    if (($_SESSION['connexion'] == 1 )AND ($ps != $_SESSION['pseudo'])){
+                                       if(!isFollw($pseudo,$ps)) {
+                                         ?> <button class="btn followButton" rel="6">Follow</button> <?php
+                                        }
+                                           
+                                          else {
+                                              ?> <button class="btn followButton following" rel="6">Following</button> <?php
+                                          }
+                                      }
+                                       
+
+                                       
 
                                         ?>  
                                         </h1>
@@ -178,7 +196,6 @@ include ('fonctions/connectBD.php');
                                     <div class="row">
                                         <?php
                                         require ('fonctions/connectBD.php');
-                                        require ('fonctions/userGet.php');
                                         // session_start();
                                         global $connexion;
                                         
@@ -190,13 +207,11 @@ include ('fonctions/connectBD.php');
                                         $reponse2->execute();
                                             // On affiche chaque entrée une à une
                                      
-
                                         while ($donnees = $reponse->fetch())
                                         {
                                             if ($donnees['nbCombine'] == 0)
                                                 {
                                                     echo "Cet utilisateur n'a pas encore réalisé des pronostiques";
-
                                                 } else{?>
 
                                                     <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
@@ -273,7 +288,6 @@ include ('fonctions/connectBD.php');
                                         }   
                                       
                                         $reponse->closeCursor(); // Termine le traitement de la requête
-
                                         ?>  
                                     </div>
                                 </div>
@@ -285,54 +299,54 @@ include ('fonctions/connectBD.php');
             </div>
         </div>
 
-		<footer id="gtco-footer" role="contentinfo">
-			<div class="gtco-container">
-				<div class="row row-p	b-md">
+        <footer id="gtco-footer" role="contentinfo">
+            <div class="gtco-container">
+                <div class="row row-p   b-md">
 
-					<div class="col-md-4">
-						<div class="gtco-widget">
-							<h3>A propos de  <span class="footer-logo">BetterBook<span>.<span></span></h3>
-							<p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
-						</div>
-					</div>
+                    <div class="col-md-4">
+                        <div class="gtco-widget">
+                            <h3>A propos de  <span class="footer-logo">BetterBook<span>.<span></span></h3>
+                            <p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
+                        </div>
+                    </div>
 
-					<div class="col-md-4 col-md-push-1">
-						<div class="gtco-widget">
-							<h3>Liens</h3>
-							<ul class="gtco-footer-links">
-								<li><a href="Informations.php">Comment ça marche ?</a></li>
-								<li><a href="Contact.php">Contactez nous.</a></li>
-								<li><a href="#">Plan du site</a></li>
-								<li><a href="#">Informations légales </a></li>
-								<li><a href="#">C.G.U</a></li>
-							</ul>
-						</div>
-					</div>
+                    <div class="col-md-4 col-md-push-1">
+                        <div class="gtco-widget">
+                            <h3>Liens</h3>
+                            <ul class="gtco-footer-links">
+                                <li><a href="Informations.php">Comment ça marche ?</a></li>
+                                <li><a href="Contact.php">Contactez nous.</a></li>
+                                <li><a href="#">Plan du site</a></li>
+                                <li><a href="#">Informations légales </a></li>
+                                <li><a href="#">C.G.U</a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-					<div class="col-md-4">
-						<div class="gtco-widget">
-							<h3>Contact</h3>
-							<ul class="gtco-quick-contact">
-								<li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
-								<li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
-								<li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
-								<li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
-							</ul>
-						</div>
-					</div>
+                    <div class="col-md-4">
+                        <div class="gtco-widget">
+                            <h3>Contact</h3>
+                            <ul class="gtco-quick-contact">
+                                <li><a href="tel://0612345678"><i class="icon-phone"></i> 06 12 34 56 78</a></li>
+                                <li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
+                                <li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
+                                <li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
+                            </ul>
+                        </div>
+                    </div>
 
-				</div>
+                </div>
 
-				<div class="row copyright">
-					<div class="col-md-12">
-						<p class="pull-left">
-							<small class="block">&copy; 2017 BetterBook company. All Rights Reserved.</small>
-						</p>
-					</div>
-				</div>
+                <div class="row copyright">
+                    <div class="col-md-12">
+                        <p class="pull-left">
+                            <small class="block">&copy; 2017 BetterBook company. All Rights Reserved.</small>
+                        </p>
+                    </div>
+                </div>
 
-			</div>
-		</footer>
+            </div>
+        </footer>
     </div>
 
 </div>
@@ -342,6 +356,7 @@ include ('fonctions/connectBD.php');
 </div>
 
 <!-- jQuery -->
+<script src="js/JsFollow.js"></script>
 <script src="js/jquery.min.js"></script>
 <!-- jQuery Easing -->
 <script src="js/jquery.easing.1.3.js"></script>
