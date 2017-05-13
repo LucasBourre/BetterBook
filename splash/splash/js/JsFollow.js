@@ -1,36 +1,11 @@
-/*		$("#buttonFollow").unbind('click').click(function(){
-        var action="";
-    	if($(this).attr('data-following') == 'false'){
-        	$(this).attr('data-following', 'true');
-        	$(this).text('Unfollow');
-            action = "Follow";
-    	}else if($(this).attr('data-following') == 'true'){
-        	$(this).attr('data-following', 'false');
-        	$(this).text('Follow');
-            action = "Unfollow";
-    	}
 
-    
-
-    		$.ajax({
-                    type: "POST",
-                    url: 'fonctions/PhpFollow.php',
-                    data: {action:action},
-                    success: function(data)
-                    {
-                    	alert(action) ; 
-                        window.location="/fonctions/PhpFollow.php";                     
-                    }
-			});
-	});
-});
-*/
 
 $(document).ready(function() {
 $('button.followButton').on('click', function(e){
-    var action="accc";
     e.preventDefault();
+    var action="accc";
     $button = $(this);
+    var cote = $(this).html();
     
     if($button.hasClass('following')){
         
@@ -49,16 +24,31 @@ $('button.followButton').on('click', function(e){
         action = "Follow";
     }
 
+
+    if ($(action).val() != 0) {
+$.post("fonctions/PhpFollow.php", {
+    variable:action
+}, function(data) {
+    if (data != "") {}
+});
+}
+
+    //alert(action);
+    //$.cookie("action",action,{ expires: 5 }); // set cookie
+
+    
+    /*
     $.ajax({
                     type: "POST",
                     url: 'fonctions/PhpFollow.php',
-                    data: {action:action},
+                    data:{action:action},
                     success: function(data)
                     {
                         alert(action) ; 
                                             
                     }
             });
+      */      
     });
 });
 
@@ -77,3 +67,6 @@ $('button.followButton').hover(function(){
 });
 
 });
+
+
+
