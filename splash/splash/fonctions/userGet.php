@@ -1,8 +1,6 @@
 <?php
-
 	require ('connectBD.php');
 	
-
 	function getID($ps){
 		global $connexion;
 		$res = "null";
@@ -240,4 +238,18 @@
 		return $donnees['nbFollowed'];
 	}
 
+
+	function isFollw($ps1,$ps2){
+		global $connexion;
+		$id_f = getID($ps1);
+		$id_p= getID($ps2);
+		$requete = $connexion->prepare(
+		'SELECT ID_Pronostiqueur as Followed
+		FROM Abonnement
+		WHERE ID_Follower ="'.$id_f.'" AND ID_Pronostiqueur ="'.$id_p.'"');
+		$requete->execute();
+		$donnees = $requete->fetch();
+		return $donnees['Followed'];
+
+	}
 ?>
