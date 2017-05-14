@@ -1,4 +1,29 @@
+    $(document).ready(function() {
+        $('.historique').on('click', function(){
+           $button = $('button.followButton');
+            if($button.hasClass('following')){
+        window.open('http://betterbook.esy.es/fonctions/HistoriquePari.php', 'width=710,height=555,left=160,top=170');
+    }
 
+    else {  alert('Pour consulter l historique abbonez vous à cet utilisateur');
+    }
+
+     });
+});
+
+$(document).ready(function() {
+$('.historique').hover(function(){
+     $h = $(this);
+    if($h.hasClass('historique')){
+        $h.addClass('historique_souris');
+    }
+}, function(){
+    if($h.hasClass('historique')){
+        $h.removeClass('historique_souris');
+    }
+});
+ 
+}); 
 
 $(document).ready(function() {
 $('button.followButton').on('click', function(e){
