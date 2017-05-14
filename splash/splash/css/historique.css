@@ -1,0 +1,16 @@
+.historique{
+	margin-bottom: 0;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    letter-spacing: .1em;
+    margin-top: 0px;
+ }
+
+
+ .historique_souris{
+	margin-bottom: 0;
+    text-transform: uppercase;
+    color: rgba(255, 0, 0, 0.94);
+    letter-spacing: .1em;
+    margin-top: 0px;
+ }
