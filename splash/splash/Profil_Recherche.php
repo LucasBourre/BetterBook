@@ -55,6 +55,7 @@ include ('fonctions/connectBD.php');
     <!-- Theme style  -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/Follow.css">
+     <link rel="stylesheet" href="css/historique.css">
     <!-- Theme icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -278,8 +279,15 @@ include ('fonctions/connectBD.php');
                                                             </span>
                                                             <span class="counter js-counter" data-from="0" data-to=<?php echo getClassementBenefice($ps);?> data-speed="100" data-refresh-interval="50">1</span>
                                                             <span class="counter-label">Classement BetterBook (bénéfices)</span>
-
                                                         </div>
+                                                    </div>
+
+                                                     <div class="col-md-6 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+                                                        <div class="feature-center">
+                                                            <span class="icon">
+                                                                  <i class="fa fa-hourglass-half"></i> </span>
+                                                             <span class="historique">Historique des paris</span>
+                                                      </div>
                                                     </div>
                                                     
                                                    
