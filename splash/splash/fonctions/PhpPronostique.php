@@ -14,7 +14,9 @@
    						$int = (int)$x;
 					
 					// On récupère tout le contenu de la table jeux_video
-					$reponse = $connexion->prepare("select m.id,e1.nom as m1 ,e2.nom as m2,m.cote1,m.cote2,m.coteN from Matchs m join Equipes e1 on m.equipe1 = e1.id join Equipes e2 on m.equipe2 = e2.id where m.championnat='$int'");
+					$reponse = $connexion->prepare("SELECT m.id, e1.nom AS m1, e2.nom AS m2, m.cote1, m.cote2, m.coteN FROM Matchs m JOIN Equipes e1 ON m.equipe1 = e1.id JOIN Equipes e2 ON m.equipe2 = e2.id WHERE m.championnat ='$int' AND  `date` >= DATE( SYSDATE( ) ) AND  `heureDebut` > TIME( SYSDATE( ) )");
+
+				
 					$reponse->execute();
 					
 						// On affiche chaque entrée une à une
@@ -31,7 +33,7 @@
 					    	 	<button class="bouton" value=<?php echo $donnees['cote1']; ?>> <?php echo $donnees['cote1']; ?> </button>
 					    	 </span>
 					    	 
-					    	 <span class ="equipe" value="N"> Match Nul
+					    	 <span class ="equipe" value="N"> match null  
 								<button class="boutonX" value=<?php echo $donnees['coteN']; ?>> <?php echo $donnees['coteN']; ?></button>
 							</span>
 							
