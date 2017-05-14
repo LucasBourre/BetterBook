@@ -6,7 +6,6 @@
 					 include 'userGet.php';
 				
 					global $connexion;
-
 					if ($_SESSION['connexion'] == 1){
 					///// inserer dans la base de donnée 
 					if (isset($_POST['mise']) AND isset($_POST['cote'])) {
@@ -60,7 +59,13 @@
 						 	$insererPU->closeCursor();
 						 }
 						 
+						 $idUser =  getID($_SESSION['pseudo']) ; 
+						 $IncIdComb= $connexion->prepare("update UserProfil set nbCombine = nbCombine +1 where id  =' $idUser'");
+						 $IncIdComb->execute();
+						 $IncIdComb->closeCursor();
 						 
+						 
+
    						}
   
 					}
