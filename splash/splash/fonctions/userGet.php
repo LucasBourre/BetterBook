@@ -186,7 +186,7 @@
 		while($ligne = $requete->fetch()){
 			?>
 			<tr>
-                <td class="pseudoAbonnement"> <?php echo $ligne['pseudo'];?></td>                                          
+                <td class="pseudoClassement"> <?php echo $ligne['pseudo'];?></td>
             </tr>
             <?php
 		}
@@ -205,7 +205,7 @@
 		$requete->execute();
 		while($ligne = $requete->fetch()){
 			?><tr>
-                <td class="pseudoAbonnés"> <?php echo $ligne['pseudo'];?></td>
+                <td class="pseudoClassement"> <?php echo $ligne['pseudo'];?></td>
                                                                     
               </tr>
             <?php

@@ -455,6 +455,10 @@ require ('fonctions/userGet.php');
     <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 </div>
 
+
+<!-- Pour chercher un profil -->
+<script src="js/JsProfil_Recherche.js"></script>
+
 <!-- jQuery -->
 <script src="js/jquery.min.js"></script>
 <!-- jQuery Easing -->
