@@ -181,7 +181,7 @@
                             <h3>A propos de <span class="footer-logo">BetterBook<span>.<span></span></h3>
                             <p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un
                                 classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs
-                                puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
+                                puissent suivre les pronostiques proposés par les plus connaisseurs.</p>
                         </div>
                     </div>
 

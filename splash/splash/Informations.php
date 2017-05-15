@@ -178,7 +178,7 @@ include ('fonctions/connectBD.php');
 					<div class="col-md-4">
 						<div class="gtco-widget">
 							<h3>A propos de  <span class="footer-logo">BetterBook<span>.<span></span></h3>
-							<p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivrent les pronostiques proposés par les plus connaisseurs.</p>
+							<p>BetterBook est un site proposant aux utilisateurs d'inscrire leurs paris. Un classement des meilleurs parieurs est réalisé afin que les nouveaux utilisateurs puissent suivre les pronostiques proposés par les plus connaisseurs.</p>
 						</div>
 					</div>
 
