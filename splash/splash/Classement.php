@@ -145,7 +145,7 @@
                                 $reponse = $connexion->prepare(
                                     'select pseudo , BeneficesG, tauxSuccesG,coteMoy
                                 from UserProfil
-                                where tauxSuccesG > 0
+                                where tauxSuccesG >= 0
                                 order by BeneficesG desc'
 
                                 );

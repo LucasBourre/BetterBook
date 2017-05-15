@@ -29,37 +29,53 @@ if (isset($_POST['btn-modMatch'])) {
         $var = $connexion->prepare($sql);
         $var ->execute();
 
-        //requete 3 : table combine : si tous resprono = 1 ( PAS BON )
-        $sql="Update Combine C Set C.resFinal =1, C.benefices=C.coteTotale*C.mise
-Where C.ID = ( 
-		Select DISTINCT (P1.idCombine) From PronoUser P1
-		Where P1.idCombine = C.ID
-                AND P1.IdCombine NOT IN (
-                        	Select P1.IdCombine where P1.resultatProno is
-                		null
-                                )
-                AND P1.IdCombine NOT IN (
-			                Select P1.IDCombine where P1.resultatProno =0
-                                        )
-             	)";
-        $var = $connexion->prepare($sql);
-        $var ->execute();
-
-        //update table combine : Si resProno = 0  (PAS BON )
-        $sql="Update Combine C Set C.resFinal =0, C.benefices=-C.mise
-Where C.ID = ( 
-		Select DISTINCT (P1.idCombine) From PronoUser P1
-		Where P1.idCombine = C.ID
-                AND P1.IdCombine NOT IN (
-                        	Select P1.IdCombine where P1.resultatProno is
-                		null
-                                )
-                AND P1.IdCombine  IN (
-			                Select P1.IDCombine where P1.resultatProno =0
-                                        )
-             	)";
-        $var = $connexion->prepare($sql);
-        $var ->execute();
+        //Selection des combinés en cours
+		$requete = $connexion->prepare(
+		'SELECT *
+		FROM Combine
+		WHERE resFinal IS NULL');
+		$requete->execute();
+			while($ligne = $requete->fetch()){
+				$idcombine = $ligne['ID'];
+				$mise = $ligne['mise'];
+				$cote = $ligne['coteTotale'];
+				
+				$res = 1;
+				
+				//Selection des résultats des matchs du combiné
+				$requete2 = $connexion->prepare(
+				'SELECT resultatProno 
+				FROM PronoUser
+				WHERE IDCombine = "'.$idcombine.'"');
+				$requete2->execute();
+				while($ligne = $requete2->fetch()){
+					if ($ligne['resultatProno'] == 0){
+						$res = 0;//Le combiné a échoué
+					} else if ($ligne['resultatProno'] == null){
+						$res = null;//Le combiné est encore en cours
+					}
+				}
+				//NOTE: si $res est resté à 1 -> combiné réussi
+				
+				//Mise à jour du RésultatProno
+				$requeteUpdate = $connexion->prepare(
+				'UPDATE Combine SET resFinal = "'.$res.'" WHERE IDCombine = "'.$idcombine.'"');
+				$requeteUpdate->execute();
+				
+				//Mise à jour du bénéfice
+				if ($res == 1){
+					$benef = $mise * $cote;
+					$requeteBenef = $connexion->prepare(
+					'UPDATE Combine SET benefices = "'.$benef.'" WHERE IDCombine = "'.$idcombine.'"');
+					$requeteBenef->execute();
+				} else if ($res == 0){
+					$benef = $mise * (-1);
+					$requeteBenef = $connexion->prepare(
+					'UPDATE Combine SET benefices = "'.$benef.'" WHERE IDCombine = "'.$idcombine.'"');
+					$requeteBenef->execute();
+			}
+			
+		}
 
         //Requete 4 : on met a jour les donnees de l'utilisateur :
         // le beneficeGlobal
