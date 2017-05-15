@@ -339,6 +339,7 @@ include ('fonctions/connectBD.php');
                                 <li><a href="mailto:BetterBookContact@gmail.com"><i class="icon-mail2"></i> BetterBookContact@gmail.com</a></li>
                                 <li><a href="https://www.facebook.com/BetterBook-911540932320733/"><i class="icon-facebook-with-circle"></i> Facebook </a></li>
                                 <li><a href="https://twitter.com/BetterBookFR"><i class="icon-twitter-with-circle"></i> Twitter </a></li>
+                                <li><a href="PanelAdmin.php"> Panel Administrateur </a></li>
                             </ul>
                         </div>
                     </div>
